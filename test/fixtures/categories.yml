@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  menu: false
+  hande: MyString
+  status: false
+  sort_order: 1
+
+two:
+  menu: false
+  hande: MyString
+  status: false
+  sort_order: 1

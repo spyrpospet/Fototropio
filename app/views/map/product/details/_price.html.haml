@@ -1,0 +1,8 @@
+%div{class: "details flex flex-col"}
+  %div{class: "details flex flex-col gap-y-1 py-10 text-2xl"}
+    - if product.offer.present?
+      %div{class: "flex flex-row gap-x-3"}
+        %div{class: "line-through text-red-600 ml-2"}= number_to_currency(product.price, unit: "€")
+        %div{class: "text-gray-400 "}= number_to_currency(product.net_price, unit: "€")
+    - else
+      %div{class: "text-gray-400"}= number_to_currency(product.net_price, unit: "€")

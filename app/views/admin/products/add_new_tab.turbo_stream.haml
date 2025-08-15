@@ -1,0 +1,3 @@
+= turbo_stream.append "tabs-list" do
+  = simple_fields_for "product[tabs_attributes][#{@dom_id}]"  do |t|
+    = render partial: "admin/products/tab", locals: { t: t, dom_id: @dom_id }

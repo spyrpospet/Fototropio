@@ -1,0 +1,17 @@
+= content_for :body do
+  %div{"data-controller": "product"}
+    = simple_form_for [:admin, @product], html: { class: "flex flex-col" } do |f|
+      %div{class: "sticky top-0 bg-white z-50"}
+        %div{class: "flex flex-row items-center justify-between border-b py-3 mb-6", id: "product-heading"}
+          %h1{class: "text-2xl font-bold"} #{action_name == "new" ? t("new_product") : t("edit_product")}
+          %div{class: "flex flex-row items-center gap-x-3"}
+            = link_to t("cancel"), admin_products_path, class: "btn btn-neutral"
+            = f.submit t("save"), class: "btn btn-neutral"
+      %div{class: "flex flex-col test"}
+        %div{id: "page-errors"}
+        %div{class: "tabs tabs-lifted", role: "tablist"}
+          = render partial: 'details', locals: { f: f, locale: locale }
+          = render partial: 'images', locals: { f: f, locale: locale }
+          = render partial: 'options', locals: { f: f, locale: locale, options: @options }
+          = render partial: 'tabs', locals: { f: f, locale: locale }
+          = render partial: 'metas', locals: { f: f, locale: locale }

@@ -1,0 +1,19 @@
+%div{class: "item"}
+  - if t.object&.persisted?
+    = t.input :id, as: :hidden, wrapper: false
+    = t.input :_destroy, as: :hidden, input_html: { value: 0, class: "destroy" }, wrapper: false
+  %div{class: "tabs tabs-lifted", role: "tablist", "data-controller": "tab"}
+    - I18n.available_locales.each do |locale|
+      %input{class: "tab uppercase", name: "tab_tabs_#{(dom_id.present? ? dom_id : t.object.id)}", type: "radio", role: "tab", "aria-label":locale, checked: locale == I18n.default_locale}
+      %div{class:"tab-content bg-base-100 border-base-300 rounded-box p-6 w-full", role: "tabpanel"}
+        %div{class: "flex flex-row items-center gap-6"}
+          %div{class: "flex flex-col gap-y-2 w-1/3"}
+            = t.label :title, t("title")
+            = t.input "title_#{locale}", input_html: { class: "input input-bordered w-full max-w-xs" }, wrapper: false, label: false
+          %div{class: "flex flex-col gap-y-2 mt-3 w-2/3"}
+            = t.label :description, t("description")
+            = t.rich_text_area  "description_#{locale}", input_html: { class: "border" }, wrapper: false, label: false
+          %div
+            = link_to "javascript:;", class: "btn btn-error text-white", data:{ action:"click->tab#remove_tab"} do
+              %svg.w-6.h-6{:fill => "none", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
+                %path{:d => "M6 18 18 6M6 6l12 12", "stroke-linecap" => "round", "stroke-linejoin" => "round"}

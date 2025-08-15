@@ -1,0 +1,25 @@
+%html{"data-theme":"light", lang:I18n.locale}
+  %head
+    %base
+    %meta{charset: "utf-8"}
+    %title
+    %meta{content: "width=device-width, initial-scale=1, shrink-to-fit=no", name: "viewport"}
+    = csrf_meta_tags
+    = csp_meta_tag
+    = javascript_importmap_tags
+
+    %link{href: "https://cdn.jsdelivr.net/npm/daisyui@4.10.2/dist/full.min.css", rel: "stylesheet"}
+    %script{src: "https://cdn.tailwindcss.com"}
+    = stylesheet_link_tag "actiontext", "data-turbo-track": "reload"
+    = stylesheet_link_tag "admin/application", "data-turbo-track": "reload"
+  %body
+    %div{class: "wrapper flex h-screen"}
+      %div{class: "inner m-auto w-1/3 py-20 px-6 text-center rounded border"}
+        = simple_form_for :admin, url: admin_authenticate_url, method: :post do |f|
+          %div{class:"flex flex-col space-y-6"}
+            %h2{class: "text-3xl"}= t('login_to_admin')
+            %div{id: "admin-login-error"}
+            = f.input :email, label: false, input_html: {class: "input input-bordered w-full"}
+            = f.input :password, label: false, input_html: {class: "input input-bordered w-full"}
+            %div{class: "justify-center"}
+              = f.button :submit, t('login'), class: "btn btn-primary max-w-xs"

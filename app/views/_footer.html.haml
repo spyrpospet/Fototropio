@@ -1,0 +1,8 @@
+%div{id: "footer"}
+  %div{class: "flex flex-col"}
+    %div{class: "grid grid-cols-1 lg:grid-cols-3 mx-auto gap-6 py-12 w-11/12 xl:w-8/12"}
+      = render partial: "footer/store_information", cache: true
+      = render partial: "footer/information", cache: true
+      = render partial: "footer/quick_links", cache: true
+  %div{class: "flex justify-center mx-auto gap-y-6 py-3 w-11/12 xl:w-8/12 lg:justify-between"}
+    %div © #{Time.now.year} All rights reserved.

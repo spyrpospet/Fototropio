@@ -1,0 +1,11 @@
+%div{class: "relative"}
+  - if category.image.present?
+    %picture
+      %source{srcset: url_for(category.image.variant(:category_xs)), media: "(max-width: 425px)"}
+      %source{srcset: url_for(category.image.variant(:category_sm)), media: "(max-width: 576px)"}
+      %source{srcset: url_for(category.image.variant(:category_md)), media: "(max-width: 768px)"}
+      = image_tag(category.image.variant(:category), class: "w-full absolute inset-0 h-full object-cover", alt: category.title, loading: "lazy")
+  %div{class: "relative flex items-center justify-center py-6 gap-6 lg:flex-row lg:justify-center z-10 h-[250px] md:h-[325px] lg:h-[337px] xl:h-[414px]"}
+    %div{class: "flex flex-col py-12 text-white"}
+      %h1{class: "text-3xl font-bold text-center"}= category.title
+      = render partial: "/map/category/breadcrumbs", locals: {category: category}

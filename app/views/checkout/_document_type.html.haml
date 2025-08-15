@@ -1,0 +1,9 @@
+%div{class: "flex flex-col text-center bg-gray-100 border", "data-controller": "document-type"}
+  %div{class: "py-3 text-lg"}= t("document_type")
+  %div{class: "flex flex-wrap justify-evenly bg-white gap-x-3 p-3"}
+    %label{class: "flex flex-row gap-x-3 cursor-pointer", "data-action": "click->document-type#change_type"}
+      %input{type: "radio", name: "checkout[document_type]", value: "receipt", checked: true, "data-action": "click->document-type#change_type"}
+      %div= t("receipt")
+    %label{class: "flex flex-row gap-x-3 cursor-pointer", "data-action": "click->document-type#change_type"}
+      %input{type: "radio", name: "checkout[document_type]", value: "invoice"}
+      %div= t("invoice")

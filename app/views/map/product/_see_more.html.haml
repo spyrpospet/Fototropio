@@ -1,0 +1,10 @@
+- if products.present?
+  %div{class: "flex flex-col mx-auto w-11/12 border-t mt-12", id: "see_more", "data-controller": "see-more"}
+    %h2{class: "font-bold text-center uppercase py-6 lg:py-12 lx:py-24 lg:text-3xl xl:text-5xl"}= t("see_more")
+    %div{class: "glide", "data-see-more-target": "seeMore"}
+      %div{class: "glide__track", "data-glide-el": "track"}
+        %ul{class: "glide__slides"}
+          = render partial: "map/product/see_more/product", collection: products
+      -# %div{class: "glide__arrows", "data-glide-el": "controls"}
+      -#   %button{class: "glide__arrow glide__arrow--left new-arrival-slider-arrow left", "data-glide-dir": "<"} <
+      -#   %button{class: "glide__arrow glide__arrow--right new-arrival-slider-arrow right", "data-glide-dir": ">"} >

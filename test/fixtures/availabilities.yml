@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  hande: MyString
+  sort_order: 1
+
+two:
+  hande: MyString
+  sort_order: 1

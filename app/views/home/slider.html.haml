@@ -1,0 +1,14 @@
+= turbo_frame_tag "home-slider" do
+  - if @slides.present?
+    - cache @slides do
+      %div{class: "p-6 xl:mx-auto xl:p-0 2xl:w-7/12"}
+        %div{class: "glide relative", id:"slider", "data-controller": "slider", "data-slider-target": "slider"}
+          %div{class: "glide__track", "data-glide-el": "track"}
+            %ul{class: "glide__slides"}
+              - @slides.each do |item|
+                %li{class: "glide__slide"}
+                  = link_to item.url do
+                    - if item.image.present?
+                      = image_tag(item.image.variant(:slider), size: "1920x880", class: "object-cover")
+                    - else
+                      = image_tag("https://placehold.co/1920x880", class: "object-cover")

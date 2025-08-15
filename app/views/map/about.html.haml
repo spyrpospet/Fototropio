@@ -1,0 +1,9 @@
+= content_for :body do
+  - if @user.present?
+    %div{class: "mx-auto w-11/12 xl:p-0 xl:w-9/12 2xl:w-7/12"}
+      %div{class: "flex flex-col"}
+        .flow-root
+          - if @user.image.present?
+            = image_tag @user.image, alt: @user.full_name, class: "w-full md:w-72 lg:w-80 xl:w-96 md:float-left md:mr-6 md:mb-2 rounded object-cover"
+          %div{class: "text-base leading-relaxed"}
+            = @user.description&.html_safe

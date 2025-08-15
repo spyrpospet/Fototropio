@@ -1,0 +1,10 @@
+%div{class: "relative product-image", id: dom_id(image), data: {product_id: @product.id, image_id: image.id}}
+  %div{class: "flex flex-col"}
+    - if image.present?
+      = image_tag(image.variant(:admin), size: "200x200", "data-preview-target": "preview")
+    - else
+      = image_tag("https://placehold.co/200x200", size: "200x200", "data-preview-target": "preview")
+  %div{class: "absolute top-2 right-2"}
+    = link_to remove_image_admin_products_path(id: image), data: {turbo_method: :delete} do
+      %svg{class: "w-6 h-6 p-1 bg-white", :fill => "none", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
+        %path{:d => "M6 18L18 6M6 6l12 12", "stroke-linecap" => "round", "stroke-linejoin" => "round"}

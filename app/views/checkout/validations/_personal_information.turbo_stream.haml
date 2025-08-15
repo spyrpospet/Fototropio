@@ -1,0 +1,59 @@
+- if @params["first_name"].blank?
+  = turbo_stream.update "checkout-first-name-error" do
+    %div{"data-controller":"alert", "data-alert-common-outlet": "#common"}= t("checkout.errors.first_name.blank")
+
+- if @params["last_name"].blank?
+  = turbo_stream.update "checkout-last-name-error" do
+    %div{"data-controller":"alert", "data-alert-common-outlet": "#common"}= t("checkout.errors.last_name.blank")
+
+- if @params["email"].blank?
+  = turbo_stream.update "checkout-email-error" do
+    %div{"data-controller":"alert", "data-alert-common-outlet": "#common"}= t("checkout.errors.email.blank")
+
+- if @params["mobile"].blank?
+  = turbo_stream.update "checkout-mobile-error" do
+    %div{"data-controller":"alert", "data-alert-common-outlet": "#common"}= t("checkout.errors.mobile.blank")
+
+- if @params["phone"].length != 10
+  = turbo_stream.append "checkout-phone-error" do
+    %div{"data-controller":"alert", "data-alert-common-outlet": "#common"}= t("checkout.errors.phone.digits")
+
+- if @params["mobile"].present? && @params["mobile"].length != 10
+  = turbo_stream.append "checkout-mobile-error" do
+    %div{"data-controller":"alert", "data-alert-common-outlet": "#common"}= t("checkout.errors.mobile.digits")
+
+- if @params["address"].blank?
+  = turbo_stream.update "checkout-address-error" do
+    %div{"data-controller":"alert","data-alert-common-outlet": "#common"}= t("checkout.errors.address.blank")
+
+- if @params["city"].blank?
+  = turbo_stream.update "checkout-city-error" do
+    %div{"data-controller":"alert", "data-alert-common-outlet": "#common"}= t("checkout.errors.city.blank")
+
+- if @params["postal_code"].blank?
+  = turbo_stream.update "checkout-postal-code-error" do
+    %div{"data-controller":"alert", "data-alert-common-outlet": "#common"}= t("checkout.errors.postal_code.blank")
+
+- if @params["country"].blank?
+  = turbo_stream.update "checkout-country-error" do
+    %div{"data-controller":"alert", "data-alert-common-outlet": "#common"}= t("checkout.errors.country.blank")
+
+- if @params["region"].blank?
+  = turbo_stream.update "checkout-region-error" do
+    %div{"data-controller":"alert", "data-alert-common-outlet": "#common"}= t("checkout.errors.region.blank")
+
+- if @params["company_name"].blank? && @params["document_type"] == "invoice"
+  = turbo_stream.update "checkout-company-name-error" do
+    %div{"data-controller":"alert", "data-alert-common-outlet": "#common"}= t("checkout.errors.company_name.blank")
+
+- if @params["social_security_number"].blank? && @params["document_type"] == "invoice"
+  = turbo_stream.update "checkout-social-security-number-error" do
+    %div{"data-controller":"alert", "data-alert-common-outlet": "#common"}= t("checkout.errors.social_security_number.blank")
+
+- if @params["doy"].blank? && @params["document_type"] == "invoice"
+  = turbo_stream.update "checkout-doy-error" do
+    %div{"data-controller":"alert", "data-alert-common-outlet": "#common"}= t("checkout.errors.doy.blank")
+
+- if @params["profession"].blank? && @params["document_type"] == "invoice"
+  = turbo_stream.update "checkout-profession-error" do
+    %div{"data-controller":"alert", "data-alert-common-outlet": "#common"}= t("checkout.errors.profession.blank")

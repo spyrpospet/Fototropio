@@ -1,0 +1,8 @@
+= content_for :body do
+  %div{class: "flex flex-col xl:w-10/12 w-11/12 py-6 mx-auto", "data-controller": "brand"}
+    = render partial: "map/brand/breadcrumbs", locals: {brand: @brand}
+    %div{class: "flex flex-col justify-center gap-x-12 gap-y-4 py-6 items-center lg:flex-row", id: "brand"}
+      = render partial: "map/brand/image", locals: {brand: @brand}
+      = render partial: "map/brand/details", locals: {brand: @brand}
+    = turbo_frame_tag "brand-products" do
+      = render partial: "map/brand/products", locals: {products: @products}

@@ -1,0 +1,350 @@
+# Files in the config/locales directory are used for internationalization and
+# are automatically loaded by Rails. If you want to use locales other than
+# English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t "hello"
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t("hello") %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more about the API, please read the Rails Internationalization guide
+# at https://guides.rubyonrails.org/i18n.html.
+#
+# Be aware that YAML interprets the following case-insensitive strings as
+# booleans: `true`, `false`, `on`, `off`, `yes`, `no`. Therefore, these strings
+# must be quoted to be interpreted as strings. For example:
+#
+#     en:
+#       "yes": yup
+#       enabled: "ON"
+
+el:
+  time:
+    formats:
+      default: "%d/%m/%Y %H:%M"
+      long: "%-d %B %Y, %H:%M"
+      short: "%-d %b, %H:%M"
+  date:
+    formats:
+      default: "%d/%m/%Y"
+      long: "%-d %B %Y"
+      short: "%-d %b"
+    month_names:
+      - ~
+      - "Ιανουάριος"
+      - "Φεβρουάριος"
+      - "Μάρτιος"
+      - "Απρίλιος"
+      - "Μάιος"
+      - "Ιούνιος"
+      - "Ιούλιος"
+      - "Αύγουστος"
+      - "Σεπτέμβριος"
+      - "Οκτώβριος"
+      - "Νοέμβριος"
+      - "Δεκέμβριος"
+    abbr_month_names:
+      - ~
+      - "Ιαν"
+      - "Φεβ"
+      - "Μαρ"
+      - "Απρ"
+      - "Μάι"
+      - "Ιουν"
+      - "Ιουλ"
+      - "Αυγ"
+      - "Σεπ"
+      - "Οκτ"
+      - "Νοε"
+      - "Δεκ"
+
+
+  # active record
+  activerecord:
+    attributes:
+      defaults:
+        title: "Τίτλος"
+        description: "Περιγραφή"
+        status: "Κατάσταση"
+        sort_order: "Σειρά"
+        handle: "handle"
+        options: "Επιλογές"
+        parents: "Γονείς"
+      product:
+        mpn: "MPN"
+        sku: "SKU"
+        price: "Τιμή"
+        code: "Κωδικός προϊόντος"
+        offer: "Τιμή με έπτωση"
+        quantity: "Ποσότητα"
+        subtract: "Αφαιρεση αποθέματος"
+        availability: "Διαθεσιμότητα"
+        brand: "Κατασκευαστής"
+        label: "Ετικέτα"
+        categories: "Κατηγορίες"
+        best_seller: "Δημοφιλές"
+      availability:
+        can_buy: "Μπορεί να αγοράσει;"
+      page:
+        qlink: "Σύνδεσμος"
+      setting:
+        bank_deposit_instructions: "Οδηγίες κατάθεσης"
+    errors:
+      messages:
+        blank: "δεν μπορεί να είναι κενό."
+        invalid: "δεν είναι έγκυρο."
+        taken: "έχει ήδη χρησιμοποιηθεί."
+        not_a_number: "πρέπει να είναι αριθμός."
+        required: "είναι υποχρεωτικό."
+
+
+  # label
+  bank_deposit_instructions: "Οδηγίες κατάθεσης"
+  filter: "Φίλτρο"
+  characteristic: "Χαρακτηριστικό"
+  login: "Σύνδεση"
+  logout: "Αποσύνδεση"
+  invalid_credentials: "Λάθος στοιχεία σύνδεσης..."
+  dashboard: "Πίνακας ελέγχου"
+  menu: "Μενού"
+  products: "Προϊόντα"
+  product: "Προϊόν"
+  new_product: "Νέο προϊόν"
+  edit_product: "Επεξεργασία προϊόντος"
+  orders: "Παραγγελίες"
+  categories: "Κατηγορίες"
+  brands: "Κατασκευαστές"
+  brand: "Κατασκευαστής"
+  new_brand: "Νέος κατασκευαστής"
+  edit_brand: "Επεξεργασία κατασκευαστή"
+  options: "Επιλογές"
+  option: "Επιλογή"
+  new_option: "Νέα επιλογή"
+  edit_option: "Επεξεργασία επιλογής"
+  pages: "Σελίδες"
+  new_page: "Νέα σελίδα"
+  edit_page: "Επεξεργασία σελίδας"
+  slider: "Διαφάνειες"
+  banners: "Μπάνερ"
+  settings: "Ρυθμίσεις"
+  general_settings: "Γενικές ρυθμίσεις"
+  availability: "Διαθεσιμότητα"
+  availabilities: "Διαθεσιμότητες"
+  administrators: "Διαχειριστές"
+  administrator: "Διαχειριστής"
+  title: "Τίτλος"
+  status: "Κατάσταση"
+  ancestry: "Ancestry"
+  active: "Ενεργό"
+  inactive: "Ανενεργό"
+  controls: "Ενέργειες"
+  new_category: "Νέα κατηγορία"
+  edit_category: "Επεξεργασία κατηγορίας"
+  details: "Λεπτομέρειες"
+  metas: "Metas"
+  save: "Αποθήκευση"
+  description: "Περιγραφή"
+  images: "Εικόνες"
+  save_successful: "Η αποθήκευση ήταν επιτυχής"
+  delete_successful: "Η διαγραφή ήταν επιτυχής"
+  are_you_sure: "Είστε σίγουροι;"
+  sort_order: "Ταξινόμηση"
+  increase_sort: "Φθηνότερο - Ακριβότερο"
+  decrease_sort: "Ακριβότερο - Φθηνότερο"
+  cancel: "Ακύρωση"
+  can_buy: "Μπορεί να αγοράσει"
+  yes: "Ναι"
+  no: "Όχι"
+  handle: "handle"
+  new_setting: "Νέα ρύθμιση"
+  edit_setting: "Επεξεργασία ρύθμισης"
+  shop_now: "Αγοράστε τώρα"
+  sale: "Προσφορά"
+  new_arrivals: "Νέες αφίξεις"
+  store_information: "Πληροφορίες καταστήματος"
+  information: "Πληροφορίες"
+  tab: "Καρτέλα"
+  tabs: "Καρτέλες"
+  search: "Αναζήτηση"
+  quick_links: "Γρήγοροι σύνδεσμοι"
+  home_best_seller_position: "Home best seller position"
+  home_position: "Home position"
+  dimensions: "Διαστάσεις"
+  see_category: "Δείτε την κατηγορία"
+  label: "Ετικέτα"
+  labels: "Ετικέτες"
+  new_label: "Νέα ετικέτα"
+  edit_label: "Επεξεργασία ετικέτας"
+  reset: "Επαναφορά"
+  clear: "Καθαρισμός"
+  add_to_cart: "Προσθήκη στο καλάθι"
+  quantity: "Ποσότητα"
+  total: "Σύνολο"
+  subtotal: "Μερικό σύνολο"
+  document_type: "Τύπος Παραστατικού"
+  invoice: "Τιμολόγιο"
+  receipt: "Απόδειξη"
+  delivery_to_your_location: "Αποστολή στο χώρο σας"
+  pickup_from_store: "Παραλαβή από το κατάστημα"
+  shipping_methods: "Τρόποι Αποστολής"
+  personal_information: "Προσωπικά Στοιχεία"
+  payment_methods: "Τρόποι Πληρωμής"
+  pay_on_delivery: "Αντικαταβολή"
+  bank_deposit: "Κατάθεση σε τραπεζικό λογαριασμό"
+  credit_debit_card: "Πιστωτική/Χρεωστική Κάρτα"
+  first_name: "Όνομα"
+  last_name: "Επώνυμο"
+  email: "Email"
+  phone: "Τηλέφωνο"
+  mobile: "Κινητό"
+  address: "Διεύθυνση"
+  country: "Χώρα"
+  postal_code: "Τ.Κ"
+  city: "Πόλη"
+  inside_capital: "Εντός Αττικής"
+  outside_capital: "Εκτός Αττικής"
+  greece: "Ελλάδα"
+  comments: "Σχόλια"
+  transportation: "Μεταφορικά"
+  total_order: "Σύνολο παραγγελίας"
+  confirm_order: "Ολοκλήρωση παραγγελίας"
+  cart_has_no_products: "Το καλάθι δεν έχει προϊόντα"
+  weekly_orders: "Εβδομαδιαίες παραγγελίες"
+  monthly_orders: "Μηνιαίες παραγγελίες"
+  daily_orders: "Ημερήσιες παραγγελίες"
+  date_and_time: "Ημερομηνία και ώρα"
+  company_name: "Επωνυμία"
+  social_security_number: "ΑΦΜ"
+  doy: "ΔΟΥ"
+  profession: "Επάγγελμα"
+  client_info: "Στοιχεία πελάτη"
+  order_info: "Στοιχεία παραγγελίας"
+  full_name: "Ονοματεπώνυμο"
+  invoice_info: "Στοιχεία τιμολογίου"
+  order_with_code: "Παραγγελία: <span class='text-red-500'>%{code}</span>"
+  filters: "Φίλτρα"
+  region: "Περιοχή"
+  i_agree_with_terms: "Έχω διαβάσει και συμφωνώ με τους <a href='%{terms_url}' target='_blank'>Όρους Χρήσης</a>."
+  available: "Διαθέσιμο"
+  unavailable: "Μη διαθέσιμο"
+  24_installments: "ΔΩΡΕΑΝ ΜΕΤΑΦΟΡΙΚΑ &  ΕΩΣ 24 ΑΤΟΚΕΣ ΔΟΣΕΙΣ"
+  delete: "Διαγραφή"
+  specifications: "Προδιαγραφες"
+  is_filter: "Είναι φίλτρο"
+  size_guide: "Οδηγός Μεγέθους"
+  projects: "Δουλειές"
+  express_interest: "Εκδήλωση ενδιαφέροντος"
+  posts: "Άρθρα"
+  users: "Χρήστες"
+  about: "Σχετικά"
+  popular: "Δημοφιλή"
+
+  mechanism: "Μηχανισμός"
+  crystal: "Κρύσταλλο"
+  dial_color: "Χρώμα Καντράν"
+  frame_material: "Υλικό πλαισίου"
+  bracelet: "Μπρασελέ"
+  strap: "Λουράκι"
+  clasp: "Κούμπωμα"
+  raincoat: "Αδιάβροχο"
+  case_size: "Μέγεθος κάσας"
+  operations: "Λειτουργείες"
+  warranty: "Εγγύηση"
+  material_metal: "Υλικό / Μέταλλο"
+  gold_karats: "Καράτια χρυσού"
+  finish: "Φινίσρισμα"
+  weight: "Βάρος"
+  stone: "Πέτρα"
+  stone_cutting: "Κόψιμο πέτρας"
+  stone_weight: "Βάρος πέτρας"
+  stone_color: "Χρώμα πέτρας"
+  stone_purity: "Καθαρότητα πέτρας"
+  jewelry_dimensions: "Διαστάσεις κοσμήματος"
+  jewel: "Κόσμημα"
+  add_product_excel: "Προσθήκη προιόντων από excel"
+  is_collection: "Είναι συλλογή"
+  code: "Κωδικός"
+  excel_upload_success: "Επιτυχής μεταφορία αρχείου excel"
+  mass_destroy_success: "Επιτυχής διαγραφή προιόντων"
+  client_made_an_order: "Η παραγγελία σας καταχωρήθηκε με επιτυχία - #%{code}"
+  new_order_for_admin: "Έχετε νέα παραγγελία - #%{code}"
+  afm: "ΑΦΜ"
+  post_code: "Τ.Κ"
+  product_price_percentage: "Αυξομείωση τιμής προιόντων κατηγορίας"
+  price_change_from_product_code: "Από κωδικό προϊόντος"
+  price_change_to_product_code: "Έως κωδικό προϊόντος"
+  collections: "Collections"
+  see_more: "Δείτε επίσης"
+  installments: "Δόσεις"
+  send: "Αποστολή"
+  contact: "Επικοινωνία"
+  contact_us: "Επικοινωνήστε μαζί μας"
+  
+
+  home:
+    title: "Αρχική"
+    messages:
+      title_1: "ΔΩΡΕΑΝ ΜΕΤΑΦΟΡΙΚΑ"
+      subtitle_1: "Σε όλη την Ελλάδα"
+      title_2: "ΕΠΙΣΤΡΟΦΗ ΧΡΗΜΑΤΩΝ"
+      subtitle_2: "Σε περίπτωση αναξιόπιστου πρϊόντος,"
+      title_3: "12 ΑΤΟΚΕΣ ΔΟΣΕΙΣ"
+      subtitle_3: "Ανεξαρτήτως ποσού"
+      title_4: "ΤΗΛΕΦΩΝΙΚΗ ΥΠΟΣΤΗΡΙΞΗ"
+      subtitle_4: "Όλες οι εργάσιμες μέρες"
+  map:
+    category:
+      title: "Κατηγορία"
+      filters:
+        price:
+          title: "Φίλτρο τιμής"
+    product:
+      details: "Λεπτομέρειες"
+  checkout:
+    add_to_cart:
+      success:
+        title: "%{title} προστέθηκε στο καλάθι."
+      not_found:
+        title: "Το προϊόν δεν βρέθηκε."
+    order:
+      success:
+          title: "Λάβαμε την παραγγελία σας και την ετοιμάζουμε. Ο κωδικός της είναι: %{code}"
+      fail:
+          title: "Υπήρξε πρόβλημα κατά την ολοκλήρωση της παραγγελίας."
+    errors:
+      first_name:
+        blank: "Το όνομα δεν μπορεί να είναι κενό."
+      last_name:
+        blank: "Το επώνυμο δεν μπορεί να είναι κενό."
+      email:
+        blank: "Το email δεν μπορεί να είναι κενό."
+      address:
+        blank: "Η διεύθυνση δεν μπορεί να είναι κενή."
+      phone:
+        digits: "Το κινητό πρεπείζεται να είναι 10 ψηφίων."
+      mobile:
+        blank: "Το κινητό δεν μπορεί να είναι κενό."
+        digits: "Το κινητό πρεπείζεται να είναι 10 ψηφίων."
+      postal_code:
+        blank: "Ο Τ.Κ. δεν μπορεί να είναι κενός"
+      company_name:
+        blank: "Η επωνυμία δεν μπορεί να είναι κενή."
+      social_security_number:
+        blank: "Το ΑΦΜ δεν μπορεί να είναι κενό."
+      profession:
+        blank: "Το επάγγελμα δεν μπορεί να είναι κενό."
+      doy:
+        blank: "Η ΔΟΥ δεν μπορεί να είναι κενή."
+      region:
+        blank: "Η περιοχή δεν μπορεί να είναι κενή."
+      terms_agreement:
+        unchecked: "Πρέπει να συμφωνειτε με τους Όρους Χρήσης."

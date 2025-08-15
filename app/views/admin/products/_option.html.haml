@@ -1,0 +1,26 @@
+%div{class: "flex flex-col item"}
+  - if op.object&.persisted?
+    = op.input :id, as: :hidden, wrapper: false
+    = op.input :_destroy, as: :hidden, input_html: { value: 0, class: "destroy" }, wrapper: false
+  = op.input :option_id, as: :hidden, input_html: { value: (op.object&.persisted? ? op.object.option.id : option.id) }, wrapper: false
+  %div{class: "flex justify-center py-3 border-b border-t my-3"}
+    %div{class: "flex flex-row gap-x-6 items-center"}
+      %div #{op.object&.persisted? ? op.object.option.title : option.title}
+      = link_to "javascript:;", class: "btn btn-neutral text-white", data:{ dom_id: (op.object&.persisted? ? op.object.option.id : dom_id), option_id: (op.object&.persisted? ? op.object.option.id : option.id), action:"click->product#add_new_item"} do
+        %svg.w-6.h-6{:fill => "none", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
+          %path{:d => "M12 4.5v15m7.5-7.5h-15", "stroke-linecap" => "round", "stroke-linejoin" => "round"}%i{class: "icon icon-plus"}
+      = link_to "javascript:;", class: "btn btn-error text-white", data:{ action:"click->product#remove_option"} do
+        %svg.w-6.h-6{:fill => "none", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
+          %path{:d => "M6 18 18 6M6 6l12 12", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
+      %div{class: "flex flex-row gap-y-2 mt-3 gap-x-6"}
+        = op.label :required
+        = op.check_box :required, class: "toggle toggle-neutral"
+      %div{class: "flex flex-row gap-y-2 mt-3 gap-x-6"}
+        = op.label :filter, t("filter")
+        = op.check_box :filter, class: "toggle toggle-neutral"
+      %div{class: "flex flex-row gap-y-2 mt-3 gap-x-6"}
+        = op.label :characteristic, t("characteristic")
+        = op.check_box :characteristic, class: "toggle toggle-neutral"
+  %div{id: (op.object&.persisted? ? op.object.option.id : dom_id), class: "flex flex-col gap-y-12"}
+    = op.simple_fields_for :options_products_item do |opi|
+      = render partial: "admin/products/item", locals: {op:op, opi: opi, dom_id: (op.object&.persisted? ? op.object.option.id : dom_id)}

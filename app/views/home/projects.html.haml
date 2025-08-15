@@ -1,0 +1,20 @@
+= turbo_frame_tag "home-projects" do
+  - if @projects.present?
+    - cache @projects do
+      %div{class: "bg-[#333333] py-16"}
+        %div{class: "flex flex-col py-6 gap-y-2 uppercase mx-auto w-11/12 lg:w-9/12"}
+          %div{class: "text-center text-[#C3B8A5] text-lg md:text-left"} ΤΑ ΕΡΓΑ ΜΑΣ
+          %div{class: "text-center text-2xl text-white md:text-4xl md:text-left"} ΕΓΓΥΗΜΕΝΗ ΠΟΙΟΤΗΤΑ
+        %div{class: "flex flex-col"}
+          %div{class: "glide project", id:"home-projects", "data-controller": "project", "data-project-target": "slider"}
+            %div{class: "glide__track", "data-glide-el": "track"}
+              %ul{class: "glide__slides items-center"}
+                - @projects.each do |item|
+                  %li{class: "glide__slide relative"}
+                    - if item.image.present? && item.image.variable?
+                      = link_to url_for(item.image), "data-fancybox": "home-project", "data-caption": "" do
+                        = image_tag(item.image.variant(:home), size: "1200x655", class: "w-full")
+                    %div{class: "absolute bottom-0 px-3 py-1 left-0 bg-white text-[#333333] uppercase text-lg md:text-2xl md:px-6 md:py-3 xl:text-4xl"}= item.title
+            %div{class: "glide__arrows hidden md:block", "data-glide-el": "controls"}
+              %button{class: "glide__arrow glide__arrow--left home-slider-arrow left", "data-glide-dir": "<"} <
+              %button{class: "glide__arrow glide__arrow--right home-slider-arrow right", "data-glide-dir": ">"} >

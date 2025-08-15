@@ -1,0 +1,10 @@
+- if values.present?
+  - if facet.include?("filters_")
+    - facet = facet.split(".")[1]
+    %div{class: "category-filter"}
+      %h3{class: "text-2xl mb-6"}= facet
+      %div{class: "flex flex-col gap-2"}
+        - values.keys.each do |value|
+          %label{class: "flex flex-row gap-x-2 items-center cursor-pointer"}
+            %input{type:"checkbox", name: "filters[]", value: value, class: "h-4 w-4", "data-action": "change->filters#submitForm"}
+            %div{class: "text-lg"}= value

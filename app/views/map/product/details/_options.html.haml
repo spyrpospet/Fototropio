@@ -1,0 +1,13 @@
+- if product.published_options_products.present?
+  %div{class: "flex flex-col gap-y-6 py-6 pt-3", id: "product-options"}
+    - product.published_options_products.each do |options_product|
+      %div{class: "flex flex-col gap-y-1 gap-x-3", "data-product-target": "options", data: {required: options_product.required}}
+        %div{class: "text-lg font-bold w-1/3"}= options_product.option.title
+        %div{class: "flex flex-row gap-x-3 w-2/3", id: "items", "data-product-target": "itemList"}
+          - options_product.options_products_item&.each do |options_products_item|
+            %div{class: "flex flex-col item", "data-product-target": "item"}
+              = link_to options_products_item.item.title, "javascript:;", class: "text-black", "data-action": "click->product#select_item"
+              %input{type: "radio", value: options_products_item.item.id, name: "product[option_items_ids][]", class: "hidden"}
+  = link_to "javascript:;", class: "flex flex-row gap-x-3 items-center", "data-action": "click->product#clear_options" do
+    %svg{class: "size-5",:fill => "none", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
+      %path{:d => "M6 18 18 6M6 6l12 12", "stroke-linecap" => "round", "stroke-linejoin" => "round"}

@@ -1,0 +1,12 @@
+%div{class: "image flex flex-row gap-x-3"}
+  %div{class: "thumbnails flex flex-col gap-y-3"}
+    - @product.images&.each do |image|
+      - if image.variable?
+        = link_to url_for(image), "data-fancybox": "product", "data-caption": "" do
+          = image_tag(image.variant(:product_thumbnail), class: "object-cover border")
+  %div
+    - if @product.main_image.present? && @product.main_image.variable?
+      = link_to url_for(@product.main_image), "data-fancybox": "product", "data-caption": "" do
+        = image_tag(@product.main_image.variant(:product), size: "640x750", class: "object-cover w-full border")
+    - else
+      = image_tag("https://placehold.co/640x750", class: "object-cover w-full border")

@@ -1,0 +1,7 @@
+- if @product.present?
+  = turbo_stream.update "product-alert", partial: "/checkout/add_to_cart/success", locals: { product: @product }
+- else
+  = turbo_stream.update "product-alert", partial: "/checkout/add_to_cart/not_found"
+
+= turbo_stream.update "header-cart", partial: "/header/cart", locals: { count: @order.total_quantity }
+= turbo_stream.update "mobile-cart", partial: "/mobile/count", locals: { count: @order.total_quantity }

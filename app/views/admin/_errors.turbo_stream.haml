@@ -1,0 +1,7 @@
+- target_dom_id = (defined?(target) && target.present?) ? target : "page-errors"
+= turbo_stream.update target_dom_id do
+  - if object.errors.any?
+    %div{class: "alert alert-error text-white my-3", data: { controller: "alert" }}
+      %ul
+        - object.errors.full_messages.each do |message|
+          %li{class: "py-1 text-xl"}= message

@@ -1,0 +1,29 @@
+= content_for :inline_scripts do
+  :javascript
+    fbq('track', 'InitiateCheckout');
+
+= content_for :body do
+  %div{id: "checkout-form"}
+    - if @order.present? && @order.data["products"].present?
+      %div{class: "mx-auto w-11/12 2xl:w-8/12 my-10", data: {controller: "checkout"}}
+        = simple_form_for :checkout, url: checkout_submit_path, method: :post, html: {class: "flex flex-col gap-6"} do |c|
+          %div{id: "product-list"}
+            = render partial: "checkout/list", locals: {order: @order}
+          %div{class: "grid grid-cols-1 md:grid-cols-2 gap-6"}
+            %div{class: "flex flex-col gap-y-3"}
+              %div{id: "document-types"}
+                = render partial: "checkout/document_type"
+              %div{id: "personal-information"}
+                = render partial: "checkout/personal_information"
+            %div{class: "flex flex-col gap-y-3"}
+              %div{id: "send-methods"}
+                = render partial: "checkout/shipping_methods"
+              %div{id: "payment-methods"}
+                = render partial: "checkout/payment_methods"
+              %div{id: "comments"}
+                = render partial: "checkout/comments"
+              %div{id: "summary"}
+                = render partial: "checkout/summary", locals: {order: @order, c: c}
+              = c.submit t("confirm_order"), class: "mt-3 bg-red-600 text-white p-3 rounded-md text-center w-full"
+    - else
+      = render partial: "checkout/no_products"

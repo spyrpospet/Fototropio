@@ -1,0 +1,11 @@
+%div{class: "flex flex-row gap-x-6 pt-3"}
+  %div{class: "flex flex-row border items-center gap-x-1", "data-controller": "quantity"}
+    %div{class: "px-1 cursor-pointer","data-action": "click->quantity#decrement"}
+      %svg.size-5{:fill => "none", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
+        %path{:d => "M5 12h14", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
+    %div{class: "flex justify-center"}
+      %input{type: "number", name: "product[quantity]", class: "w-12 h-12 text-center", min: "1", value: "1", "data-quantity-target": "input"}
+    %div{class: "px-1 cursor-pointer", "data-action": "click->quantity#increment"}
+      %svg.size-5{:fill => "none", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
+        %path{:d => "M12 4.5v15m7.5-7.5h-15", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
+  = p.button :submit, t("add_to_cart"), class: "p-3 bg-red-500 text-white cursor-pointer", "data-action": "click->product#add_to_cart"

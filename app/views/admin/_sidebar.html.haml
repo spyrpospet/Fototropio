@@ -1,0 +1,5 @@
+%div{class: "w-2/12"}
+  %div{class: "flex flex-col py-6 h-full overflow-y-auto", id: "sidebar", data: { "turbo-permanent": "" }}
+    %div{id: "logo", class: "text-white text-3xl text-center uppercase"}= t("dashboard")
+    = render partial: "admin/sidebar/menu"
+    = render partial: "admin/sidebar/settings"

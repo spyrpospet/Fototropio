@@ -1,0 +1,25 @@
+%div{class: "item relative"}
+  %div{class: "flex flex-col"}
+    = link_to map_url((product.first_category.slug + "/" + product.slug)), class: "image overflow-hidden", "data-turbo": false do
+      - if product.main_image.present?
+        = picture_tag(class: "object-cover w-full hover:scale-125 transition ease-in-out duration-500") do
+          = tag(:source, srcset: url_for(product.main_image.variant(:category_425)), media: "(max-width: 425px)")
+          = tag(:source, srcset: url_for(product.main_image.variant(:category_768)), media: "(max-width: 768px)")
+          = tag(:source, srcset: url_for(product.main_image.variant(:category_1024)), media: "(max-width: 1024px)")
+          = tag(:source, srcset: url_for(product.main_image.variant(:category_1440)), media: "(max-width: 1440px)")
+          = image_tag(product.main_image.variant(:category), class: "object-cover w-full border hover:scale-125 transition ease-in-out duration-500")
+      - else
+        = image_tag("https://placehold.co/350x350", class: "object-cover w-full border hover:scale-125 transition ease-in-out duration-500")
+    - if product.on_sale?
+      %div{class: "absolute text-sm top-4 left-4 text-grey bg-white border px-3 py-1 rounded-md shadow-md"} -#{product.sale_percentage}%
+    - if product.label.present?
+      %div{class: "absolute text-sm top-4 right-4 text-grey bg-white border px-3 py-1 rounded-md shadow-md"}= product.label.title
+    %div{class: "details flex flex-col"}
+      %div{class: "details flex flex-col gap-y-1 py-3"}
+        %div{class: "font-bold text-base text-center text-wrap"}= product.title
+        - if product.on_sale?
+          %div{class: "flex flex-row justify-center gap-x-3"}
+            %div{class: "line-through text-gray-600 ml-2"}= number_to_currency(product.price, unit: "€")
+            %div{class: "text-black font-bold"}= number_to_currency(product.net_price, unit: "€")
+        - else
+          %div{class: "text-black font-bold text-center"}= number_to_currency(product.net_price, unit: "€")
