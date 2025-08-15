@@ -1,0 +1,94 @@
+= content_for :body do
+  %div{:style => "width: 680px;"}
+    = link_to root_url do
+      - if @settings.logo.present?
+        = image_tag(@settings.logo.variant(resize_and_pad: [300, 150, gravity: 'center', background: '#fff']), size: '300x150')
+      - else
+        = image_tag("https://placehold.co/300x250",  size: '300x150')
+      %p{:style => "margin-top: 0px; margin-bottom: 20px;"} Ευχαριστούμε που επιλέξατε για τις αγορές σας το κατάστημα μας. Η παραγγελία σας έχει παραληφθεί.
+    %table{:style => "border-collapse: collapse; width: 100%; border-top: 1px solid #DDDDDD; border-left: 1px solid #DDDDDD; margin-bottom: 20px;"}
+      %thead
+        %tr
+          %td{:colspan => "2", :style => "font-size: 12px; border-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; background-color: #EFEFEF; font-weight: bold; text-align: left; padding: 7px; color: #222222;"}= t("order_details")
+      %tbody
+        %tr
+          %td{:style => "font-size: 12px;\tborder-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; text-align: left; padding: 7px;"}
+            %b #{t('code')}:
+            = @order.code
+            %br/
+            %b #{t('payment_method')}:
+            = t("#{@order.data["payment_method"]}")
+            %br/
+            %b #{t('shipping_method')}:
+            = t("#{@order.data["send_method"]}")
+          %td{:style => "font-size: 12px;\tborder-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; text-align: left; padding: 7px;"}
+            %b #{t('email')}:
+            = @order.data["email"]
+            %br/
+            %b #{t('phone')}
+            = @order.data["phone"]
+            %br/
+            %b #{t('mobile')}
+            = @order.data["mobile"]
+    - if @order.data["comments"].present?
+      %table{:style => "border-collapse: collapse; width: 100%; border-top: 1px solid #DDDDDD; border-left: 1px solid #DDDDDD; margin-bottom: 20px;"}
+        %tbody
+          %tr
+            %td{:style => "font-size: 12px;\tborder-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; text-align: left; padding: 7px;"}= @order.data["comments"]
+
+    %table{:style => "border-collapse: collapse; width: 100%; border-top: 1px solid #DDDDDD; border-left: 1px solid #DDDDDD; margin-bottom: 20px;"}
+      %thead
+        %tr
+          %td{:style => "font-size: 12px; border-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; background-color: #EFEFEF; font-weight: bold; text-align: left; padding: 7px; color: #222222;"}= t("personal_details")
+          %td{:style => "font-size: 12px; border-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; background-color: #EFEFEF; font-weight: bold; text-align: left; padding: 7px; color: #222222;"}= t("shipping_details")
+      %tbody
+        %tr
+          %td{:style => "font-size: 12px;\tborder-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; text-align: left; padding: 7px;"}
+            #{t('full_name')}: #{@order.data["first_name"]} #{@order.data["last_name"]}
+            %br/
+            #{t('address')}: #{@order.data["address"]}
+            %br/
+            #{t('afm')}: #{@order.data["afm"]}
+            %br/
+            #{t("mobile")}: #{@order.data["mobile"]}
+            %br/
+            #{t('post_code')}: #{@order.data["postal_code"]}
+            %br/
+            #{t('region')}: #{@order.data["region"]}
+          %td{:style => "font-size: 12px;\tborder-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; text-align: left; padding: 7px;"}
+            #{t('full_name')}: #{@order.data["first_name"]} #{@order.data["last_name"]}
+            %br/
+            #{t('address')}: #{@order.data["address"]}
+            %br/
+            #{t('afm')}: #{@order.data["afm"]}
+            %br/
+            #{t('mobile')}: #{@order.data["mobile"]}
+            %br/
+            #{t('post_code')}: #{@order.data["postal_code"]}
+            %br/
+            #{t('region')}: #{@order.data["region"]}
+    %table{:style => "border-collapse: collapse; width: 100%; border-top: 1px solid #DDDDDD; border-left: 1px solid #DDDDDD; margin-bottom: 20px;"}
+      %thead
+        %tr
+          %td{:style => "font-size: 12px; border-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; background-color: #EFEFEF; font-weight: bold; text-align: center; padding: 7px; color: #222222;"}= t("title")
+          %td{:style => "font-size: 12px; border-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; background-color: #EFEFEF; font-weight: bold; text-align: center; padding: 7px; color: #222222;"}= t("quantity")
+          %td{:style => "font-size: 12px; border-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; background-color: #EFEFEF; font-weight: bold; text-align: center; padding: 7px; color: #222222;"}= t("total")
+      %tbody
+        - @order.data["products"].each do |product|
+          %tr
+            %td{:style => "font-size: 12px; border-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; text-align: left; padding: 7px;"}
+              %div= product["title_#{I18n.locale}"]
+              - product["items"]&.each do |i|
+                %div{class: "text-sm"}= i["title"]
+            %td{:style => "font-size: 12px;\tborder-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; text-align: center; padding: 7px;"}= product["quantity"]
+            %td{:style => "font-size: 12px;\tborder-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; text-align: center; padding: 7px;"} #{product["total"]}€
+      %tfoot
+        %tr
+          %td{:colspan => "2", :style => "font-size: 12px;\tborder-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; text-align: right; padding: 7px;"}
+            %b #{t('payment_method')}:
+          %td{:style => "font-size: 12px;\tborder-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; text-align: center; padding: 7px;"}= t("#{@order.data["payment_method"]}")
+        %tr
+          %td{:colspan => "2", :style => "font-size: 12px;\tborder-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; text-align: right; padding: 7px;"}
+            %b #{t('total')}:
+          %td{:style => "font-size: 12px;\tborder-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; text-align: center; padding: 7px;"}
+            #{number_with_precision(@order.total, precision: 2)}€

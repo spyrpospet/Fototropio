@@ -1,0 +1,20 @@
+%html{"data-theme":"light", lang:I18n.locale}
+  %head
+    %base
+    %meta{charset: "utf-8"}
+    %title
+    %meta{content: "width=device-width, initial-scale=1, shrink-to-fit=no", name: "viewport"}
+    = csrf_meta_tags
+    = csp_meta_tag
+    = javascript_importmap_tags
+
+    %link{href: "https://cdn.jsdelivr.net/npm/daisyui@4.10.2/dist/full.min.css", rel: "stylesheet"}
+    %script{src: "https://cdn.tailwindcss.com"}
+    = stylesheet_link_tag "vendor/choices.min", "data-turbo-track": "reload"
+    = stylesheet_link_tag "actiontext", "data-turbo-track": "reload"
+    = stylesheet_link_tag "admin/common", "data-turbo-track": "reload"
+    = stylesheet_link_tag "admin/application", "data-turbo-track": "reload"
+  %body
+    %div{class: "flex flex-row min-h-screen"}
+      = render partial: "admin/sidebar"
+      = render partial: "admin/main"

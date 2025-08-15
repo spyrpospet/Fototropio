@@ -1,0 +1,81 @@
+%div{class: "flex flex-col text-center bg-gray-100 border"}
+  %div{class: "py-3 text-lg"}= t("shipping_methods")
+  %div{class: "flex flex-col bg-white p-3"}
+    %div{class: "flex flex-col invoice-field hidden"}
+      %div{class: "flex flex-row justify-center items-center gap-x-3 py-2"}
+        %div{class: "w-3/12"}= t("company_name")
+        %div{class: "w-9/12"}
+          %input{type: "text", name: "checkout[company_name]", class: "border w-full p-1", value: ""}
+          %div{id: "checkout-company-name-error", class: "error"}
+    %div{class: "flex flex-col invoice-field hidden"}
+      %div{class: "flex flex-row justify-center items-center gap-x-3 py-2"}
+        %div{class: "w-3/12"}= t("social_security_number")
+        %div{class: "w-9/12"}
+          %input{type: "text", name: "checkout[social_security_number]", class: "border w-full p-1", value: ""}
+          %div{id: "checkout-social-security-number-error", class: "error"}
+    %div{class: "flex flex-col invoice-field hidden"}
+      %div{class: "flex flex-row justify-center items-center gap-x-3 py-2"}
+        %div{class: "w-3/12"}= t("doy")
+        %div{class: "w-9/12"}
+          %input{type: "text", name: "checkout[doy]", class: "border w-full p-1", value: ""}
+          %div{id: "checkout-doy-error", class: "error"}
+    %div{class: "flex flex-col invoice-field hidden"}
+      %div{class: "flex flex-row justify-center items-center gap-x-3 py-2"}
+        %div{class: "w-3/12"}= t("profession")
+        %div{class: "w-9/12"}
+          %input{type: "text", name: "checkout[profession]", class: "border w-full p-1", value: ""}
+          %div{id: "checkout-doy-error", class: "error"}
+    %div{class: "flex flex-row justify-center items-center gap-x-3 py-2"}
+      %div{class: "w-3/12"}= t("first_name")
+      %div{class: "w-9/12"}
+        %input{type: "text", name: "checkout[first_name]", class: "border w-full p-1", value: ""}
+        %div{id: "checkout-first-name-error", class: "error"}
+    %div{class: "flex flex-col gap-x-3"}
+      %div{class: "flex flex-row justify-center items-center gap-x-3 py-2"}
+        %div{class: "w-3/12"}= t("last_name")
+        %div{class: "w-9/12"}
+          %input{type: "text", name: "checkout[last_name]", class: "border w-full p-1", value: ""}
+          %div{id: "checkout-last-name-error", class: "error"}
+    %div{class: "flex flex-col gap-x-3"}
+      %div{class: "flex flex-row justify-center items-center gap-x-3 py-2"}
+        %div{class: "w-3/12"}= t("email")
+        %div{class: "w-9/12"}
+          %input{type: "text", name: "checkout[email]", class: "border w-full p-1", value: ""}
+          %div{id: "checkout-email-error", class: "error"}
+    %div{class: "flex flex-col gap-x-3"}
+      %div{class: "flex flex-row justify-center items-center gap-x-3 py-2"}
+        %div{class: "w-3/12"}= t("address")
+        %div{class: "w-9/12"}
+          %input{type: "text", name: "checkout[address]", class: "border w-full p-1", value: ""}
+          %div{id: "checkout-address-error", class: "error"}
+    %div{class: "flex flex-col gap-x-3"}
+      %div{class: "flex flex-row justify-center items-center gap-x-3 py-2"}
+        %div{class: "w-3/12"}= t("phone")
+        %div{class: "w-9/12"}
+          %input{type: "text", name: "checkout[phone]", class: "border w-full p-1", value: ""}
+          %div{id: "checkout-phone-error", class: "error"}
+    %div{class: "flex flex-col gap-x-3"}
+      %div{class: "flex flex-row justify-center items-center gap-x-3 py-2"}
+        %div{class: "w-3/12"}= t("mobile")
+        %div{class: "w-9/12"}
+          %input{type: "text", name: "checkout[mobile]", class: "border w-full p-1", value: ""}
+          %div{id: "checkout-mobile-error", class: "error"}
+    %div{class: "flex flex-col gap-x-3"}
+      %div{class: "flex flex-row justify-center items-center gap-x-3 py-2"}
+        %div{class: "w-3/12"}= t("postal_code")
+        %div{class: "w-9/12"}
+          %input{type: "text", name: "checkout[postal_code]", class: "border w-full p-1", value: ""}
+          %div{id: "checkout-postal-code-error", class: "error"}
+    %div{class: "flex flex-col gap-x-3"}
+      %div{class: "flex flex-row justify-center items-center gap-x-3 py-2"}
+        %div{class: "w-3/12"}= t("country")
+        %div{class: "w-9/12"}
+          %select{name: "checkout[country]", class: "border w-full p-1"}
+            %option{value: t("greece")}= t("greece")
+          %div{id: "checkout-country-error", class: "error"}
+    %div{class: "flex flex-col gap-x-3"}
+      %div{class: "flex flex-row justify-center items-center gap-x-3 py-2"}
+        %div{class: "w-3/12"}= t("region")
+        %div{class: "w-9/12"}
+          %input{type: "text", name: "checkout[region]", class: "border w-full p-1", value: ""}
+          %div{id: "checkout-region-error", class: "error"}

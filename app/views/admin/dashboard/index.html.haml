@@ -1,0 +1,8 @@
+= content_for :body do
+  %div{class: "flex flex-col gap-y-6"}
+    %div= column_chart @weekly_orders, title: t("weekly_orders")
+    %div{class: "grid grid-cols-1 md:grid-cols-2"}
+      %div
+        = line_chart @monthly_orders, title: t("monthly_orders")
+      %div
+        = column_chart @daily_orders, title: t("daily_orders")

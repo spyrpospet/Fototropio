@@ -1,0 +1,4 @@
+%div{class: "flex flex-col gap-y-3 text-center"}
+  %div{class: "uppercase text-xl"}= t("quick_links")
+  - @quick_links.each do |page|
+    = link_to page.title, map_url(page.slug), class: "text-xl"

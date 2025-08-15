@@ -1,0 +1,21 @@
+%div{class: "flex flex-col text-center bg-gray-100 border", "data-controller": "payment-method"}
+  %div{class: "py-3 text-lg"}= t("payment_methods")
+  %div{class: "grid grid-cols-1 md:grid-cols-2 bg-white gap-3 p-3"}
+    %label{class: "flex flex-row gap-x-3 cursor-pointer", "data-action": "click->payment-method#change"}
+      %input{type: "radio", name: "checkout[payment_method]", value: "pay_on_delivery", checked: true}
+      %div= t("pay_on_delivery")
+    %label{class: "flex flex-row gap-x-3 cursor-pointer", "data-action": "click->payment-method#change"}
+      %input{type: "radio", name: "checkout[payment_method]", value: "bank_transfer"}
+      %div= t("bank_deposit")
+    %div{class: "flex flex-col gap-y-3"}
+      %label{class: "flex flex-row gap-x-3 cursor-pointer items-center", "data-action": "click->payment-method#change"}
+        %input{type: "radio", name: "checkout[payment_method]", value: "credit_debit_card"}
+        %div= t("credit_debit_card")
+      %label{class: "flex flex-col gap-y-1 cursor-pointer items-center hidden", "data-payment-method-target": "installments"}
+        %div= t("installments")
+        %select{name: "checkout[installments]", class: "border w-full p-1"}
+          %option{value: "0", selected: true} 0
+          - (2...25).each do |number|
+            %option{value: number}= number
+  %div{class: "bg-white p-1 border-t text-center hidden", "data-payment-method-target": "bankTransferInstructions"}
+    %div= @settings.bank_deposit_instruction

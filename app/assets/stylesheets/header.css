@@ -1,0 +1,13 @@
+#main-menu .item .sub {
+    background-color: #fff;
+    position: absolute;
+    left: 0;
+    right: 0;
+    border-top: 1px solid #e2e2e2;
+    visibility: hidden;
+    max-height: 60vh;
+    overflow-y: auto;
+}
+#main-menu .item:hover .sub {
+    visibility: visible;
+}

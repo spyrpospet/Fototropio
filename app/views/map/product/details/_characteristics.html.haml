@@ -1,0 +1,107 @@
+%div{class: "flex flex-col gap-y-6 py-6", id: "product-characteristics"}
+  - if product.mechanism.present?
+    %div{class: "flex flex-row gap-x-3 items-center border-b pb-2"}
+      %div{class: "text-lg font-bold w-1/3"}= t("mechanism")
+      %div{class: "flex flex-row gap-x-3 w-2/3"}= product.mechanism
+
+  - if product.crystal.present?
+    %div{class: "flex flex-row gap-x-3 items-center border-b pb-2"}
+      %div{class: "text-lg font-bold w-1/3"}= t("crystal")
+      %div{class: "flex flex-row gap-x-3 w-2/3"}= product.crystal
+
+  - if product.dial_color.present?
+    %div{class: "flex flex-row gap-x-3 items-center border-b pb-2"}
+      %div{class: "text-lg font-bold w-1/3"}= t("dial_color")
+      %div{class: "flex flex-row gap-x-3 w-2/3"}= product.dial_color
+
+  - if product.frame_material.present?
+    %div{class: "flex flex-row gap-x-3 items-center border-b pb-2"}
+      %div{class: "text-lg font-bold w-1/3"}= t("frame_material")
+      %div{class: "flex flex-row gap-x-3 w-2/3"}= product.frame_material
+
+  - if product.bracelet.present?
+    %div{class: "flex flex-row gap-x-3 items-center border-b pb-2"}
+      %div{class: "text-lg font-bold w-1/3"}= t("bracelet")
+      %div{class: "flex flex-row gap-x-3 w-2/3"}= product.bracelet
+
+  - if product.strap.present?
+    %div{class: "flex flex-row gap-x-3 items-center border-b pb-2"}
+      %div{class: "text-lg font-bold w-1/3"}= t("strap")
+      %div{class: "flex flex-row gap-x-3 w-2/3"}= product.strap
+
+  - if product.clasp.present?
+    %div{class: "flex flex-row gap-x-3 items-center border-b pb-2"}
+      %div{class: "text-lg font-bold w-1/3"}= t("clasp")
+      %div{class: "flex flex-row gap-x-3 w-2/3"}= product.clasp
+
+  - if product.raincoat.present?
+    %div{class: "flex flex-row gap-x-3 items-center border-b pb-2"}
+      %div{class: "text-lg font-bold w-1/3"}= t("raincoat")
+      %div{class: "flex flex-row gap-x-3 w-2/3"}= product.raincoat
+
+  - if product.case_size.present?
+    %div{class: "flex flex-row gap-x-3 items-center border-b pb-2"}
+      %div{class: "text-lg font-bold w-1/3"}= t("case_size")
+      %div{class: "flex flex-row gap-x-3 w-2/3"}= product.case_size
+
+  - if product.operations.present?
+    %div{class: "flex flex-row gap-x-3 items-center border-b pb-2"}
+      %div{class: "text-lg font-bold w-1/3"}= t("operations")
+      %div{class: "flex flex-row gap-x-3 w-2/3"}= product.operations
+
+  - if product.warranty.present?
+    %div{class: "flex flex-row gap-x-3 items-center border-b pb-2"}
+      %div{class: "text-lg font-bold w-1/3"}= t("warranty")
+      %div{class: "flex flex-row gap-x-3 w-2/3"}= product.warranty
+
+  - if product.has_jewel_specifications?
+    %div{class: "flex flex-col"}
+      - if product.material_metal.present?
+        %div{class: "flex flex-row gap-x-3 items-center border-b pb-2"}
+          %div{class: "text-lg font-bold w-1/3"}= t("material_metal")
+          %div{class: "flex flex-row gap-x-3 w-2/3"}= product.material_metal
+
+      - if product.gold_karats.present?
+        %div{class: "flex flex-row gap-x-3 items-center border-b pb-2"}
+          %div{class: "text-lg font-bold w-1/3"}= t("gold_karats")
+          %div{class: "flex flex-row gap-x-3 w-2/3"}= product.gold_karats
+
+      - if product.finish.present?
+        %div{class: "flex flex-row gap-x-3 items-center border-b pb-2"}
+          %div{class: "text-lg font-bold w-1/3"}= t("finish")
+          %div{class: "flex flex-row gap-x-3 w-2/3"}= product.finish
+
+      - if product.weight.present?
+        %div{class: "flex flex-row gap-x-3 items-center border-b pb-2"}
+          %div{class: "text-lg font-bold w-1/3"}= t("weight")
+          %div{class: "flex flex-row gap-x-3 w-2/3"}= product.weight
+
+      - if product.stone.present?
+        %div{class: "flex flex-row gap-x-3 items-center border-b pb-2"}
+          %div{class: "text-lg font-bold w-1/3"}= t("stone")
+          %div{class: "flex flex-row gap-x-3 w-2/3"}= product.stone
+
+      - if product.stone_cutting.present?
+        %div{class: "flex flex-row gap-x-3 items-center border-b pb-2"}
+          %div{class: "text-lg font-bold w-1/3"}= t("stone_cutting")
+          %div{class: "flex flex-row gap-x-3 w-2/3"}= product.stone_cutting
+
+      - if product.stone_weight.present?
+        %div{class: "flex flex-row gap-x-3 items-center border-b pb-2"}
+          %div{class: "text-lg font-bold w-1/3"}= t("stone_weight")
+          %div{class: "flex flex-row gap-x-3 w-2/3"}= product.stone_weight
+
+      - if product.stone_color.present?
+        %div{class: "flex flex-row gap-x-3 items-center border-b pb-2"}
+          %div{class: "text-lg font-bold w-1/3"}= t("stone_color")
+          %div{class: "flex flex-row gap-x-3 w-2/3"}= product.stone_color
+
+      - if product.stone_purity.present?
+        %div{class: "flex flex-row gap-x-3 items-center border-b pb-2"}
+          %div{class: "text-lg font-bold w-1/3"}= t("stone_purity")
+          %div{class: "flex flex-row gap-x-3 w-2/3"}= product.stone_purity
+
+      - if product.jewelry_dimensions.present?
+        %div{class: "flex flex-row gap-x-3 items-center border-b pb-2"}
+          %div{class: "text-lg font-bold w-1/3"}= t("jewelry_dimensions")
+          %div{class: "flex flex-row gap-x-3 w-2/3"}= product.jewelry_dimensions

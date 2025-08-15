@@ -1,0 +1,262 @@
+- if values.present?
+  - if facet == "mechanism"
+    %div{class: "gap-y-3 category-filter relative cursor-pointer", "data-action": "click->filters#toggle_filter"}
+      %div{class: "flex flex-row items-center border border-gray-300 p-2 gap-x-3"}
+        %div= t("mechanism")
+        %div
+          %svg.w-3.h-3{:fill => "none", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
+            %path{:d => "m19.5 8.25-7.5 7.5-7.5-7.5", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
+      %div{class: "sub absolute bg-white top-12 border shadow-md min-w-48 z-40 p-3 max-h-60 overflow-y-auto drop-sub hidden"}
+        %div{class: "flex flex-col gap-2"}
+          - values.keys.each do |value|
+            %label{class: "flex flex-row gap-x-2 items-center cursor-pointer"}
+              %input{type:"checkbox", name: "filters[mechanism][]", value: value, class: "h-4 w-4", "data-action": "change->filters#submitForm"}
+              %div{class: "text-base"}= value
+  - if facet == "crystal"
+    %div{class: "gap-y-3 category-filter relative cursor-pointer", "data-action": "click->filters#toggle_filter"}
+      %div{class: "flex flex-row items-center border border-gray-300 p-2 gap-x-3"}
+        %div= t("crystal")
+        %div
+          %svg.w-3.h-3{:fill => "none", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
+            %path{:d => "m19.5 8.25-7.5 7.5-7.5-7.5", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
+      %div{class: "sub absolute bg-white top-12 border shadow-md min-w-48 z-40 p-3 max-h-60 overflow-y-auto drop-sub hidden"}
+        %div{class: "flex flex-col gap-2"}
+          - values.keys.each do |value|
+            %label{class: "flex flex-row gap-x-2 items-center cursor-pointer"}
+              %input{type:"checkbox", name: "filters[crystal][]", value: value, class: "h-4 w-4", "data-action": "change->filters#submitForm"}
+              %div{class: "text-base"}= value
+  - if facet == "dial_color"
+    %div{class: "gap-y-3 category-filter relative cursor-pointer", "data-action": "click->filters#toggle_filter"}
+      %div{class: "flex flex-row items-center border border-gray-300 p-2 gap-x-3"}
+        %div= t("dial_color")
+        %div
+          %svg.w-3.h-3{:fill => "none", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
+            %path{:d => "m19.5 8.25-7.5 7.5-7.5-7.5", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
+      %div{class: "sub absolute bg-white top-12 border shadow-md min-w-48 z-40 p-3 max-h-60 overflow-y-auto drop-sub hidden"}
+        %div{class: "flex flex-col gap-2"}
+          - values.keys.each do |value|
+            %label{class: "flex flex-row gap-x-2 items-center cursor-pointer"}
+              %input{type:"checkbox", name: "filters[dial_color][]", value: value, class: "h-4 w-4", "data-action": "change->filters#submitForm"}
+              %div{class: "text-base"}= value
+  - if facet == "frame_material"
+    %div{class: "gap-y-3 category-filter relative cursor-pointer", "data-action": "click->filters#toggle_filter"}
+      %div{class: "flex flex-row items-center border border-gray-300 p-2 gap-x-3"}
+        %div= t("frame_material")
+        %div
+          %svg.w-3.h-3{:fill => "none", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
+            %path{:d => "m19.5 8.25-7.5 7.5-7.5-7.5", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
+      %div{class: "sub absolute bg-white top-12 border shadow-md min-w-48 z-40 p-3 max-h-60 overflow-y-auto drop-sub hidden"}
+        %div{class: "flex flex-col gap-2"}
+          - values.keys.each do |value|
+            %label{class: "flex flex-row gap-x-2 items-center cursor-pointer"}
+              %input{type:"checkbox", name: "filters[frame_material][]", value: value, class: "h-4 w-4", "data-action": "change->filters#submitForm"}
+              %div{class: "text-base"}= value
+  - if facet == "bracelet"
+    %div{class: "gap-y-3 category-filter relative cursor-pointer", "data-action": "click->filters#toggle_filter"}
+      %div{class: "flex flex-row items-center border border-gray-300 p-2 gap-x-3"}
+        %div= t("bracelet")
+        %div
+          %svg.w-3.h-3{:fill => "none", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
+            %path{:d => "m19.5 8.25-7.5 7.5-7.5-7.5", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
+      %div{class: "sub absolute bg-white top-12 border shadow-md min-w-48 z-40 p-3 max-h-60 overflow-y-auto drop-sub hidden"}
+        %div{class: "flex flex-col gap-2"}
+          - values.keys.each do |value|
+            %label{class: "flex flex-row gap-x-2 items-center cursor-pointer"}
+              %input{type:"checkbox", name: "filters[bracelet][]", value: value, class: "h-4 w-4", "data-action": "change->filters#submitForm"}
+              %div{class: "text-base"}= value
+  - if facet == "strap"
+    %div{class: "gap-y-3 category-filter relative cursor-pointer", "data-action": "click->filters#toggle_filter"}
+      %div{class: "flex flex-row items-center border border-gray-300 p-2 gap-x-3"}
+        %div= t("strap")
+        %div
+          %svg.w-3.h-3{:fill => "none", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
+            %path{:d => "m19.5 8.25-7.5 7.5-7.5-7.5", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
+      %div{class: "sub absolute bg-white top-12 border shadow-md min-w-48 z-40 p-3 max-h-60 overflow-y-auto drop-sub hidden"}
+        %div{class: "flex flex-col gap-2"}
+          - values.keys.each do |value|
+            %label{class: "flex flex-row gap-x-2 items-center cursor-pointer"}
+              %input{type:"checkbox", name: "filters[strap][]", value: value, class: "h-4 w-4", "data-action": "change->filters#submitForm"}
+              %div{class: "text-base"}= value
+  - if facet == "clasp"
+    %div{class: "gap-y-3 category-filter relative cursor-pointer", "data-action": "click->filters#toggle_filter"}
+      %div{class: "flex flex-row items-center border border-gray-300 p-2 gap-x-3"}
+        %div= t("clasp")
+        %div
+          %svg.w-3.h-3{:fill => "none", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
+            %path{:d => "m19.5 8.25-7.5 7.5-7.5-7.5", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
+      %div{class: "sub absolute bg-white top-12 border shadow-md min-w-48 z-40 p-3 max-h-60 overflow-y-auto drop-sub hidden"}
+        %div{class: "flex flex-col gap-2"}
+          - values.keys.each do |value|
+            %label{class: "flex flex-row gap-x-2 items-center cursor-pointer"}
+              %input{type:"checkbox", name: "filters[clasp][]", value: value, class: "h-4 w-4", "data-action": "change->filters#submitForm"}
+              %div{class: "text-base"}= value
+  - if facet == "raincoat"
+    %div{class: "gap-y-3 category-filter relative cursor-pointer", "data-action": "click->filters#toggle_filter"}
+      %div{class: "flex flex-row items-center border border-gray-300 p-2 gap-x-3"}
+        %div= t("raincoat")
+        %div
+          %svg.w-3.h-3{:fill => "none", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
+            %path{:d => "m19.5 8.25-7.5 7.5-7.5-7.5", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
+      %div{class: "sub absolute bg-white top-12 border shadow-md min-w-48 z-40 p-3 max-h-60 overflow-y-auto drop-sub hidden"}
+        %div{class: "flex flex-col gap-2"}
+          - values.keys.each do |value|
+            %label{class: "flex flex-row gap-x-2 items-center cursor-pointer"}
+              %input{type:"checkbox", name: "filters[raincoat][]", value: value, class: "h-4 w-4", "data-action": "change->filters#submitForm"}
+              %div{class: "text-base"}= value
+  - if facet == "case_size"
+    %div{class: "gap-y-3 category-filter relative cursor-pointer", "data-action": "click->filters#toggle_filter"}
+      %div{class: "flex flex-row items-center border border-gray-300 p-2 gap-x-3"}
+        %div= t("case_size")
+        %div
+          %svg.w-3.h-3{:fill => "none", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
+            %path{:d => "m19.5 8.25-7.5 7.5-7.5-7.5", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
+      %div{class: "sub absolute bg-white top-12 border shadow-md min-w-48 z-40 p-3 max-h-60 overflow-y-auto drop-sub hidden"}
+        %div{class: "flex flex-col gap-2"}
+          - values.keys.each do |value|
+            %label{class: "flex flex-row gap-x-2 items-center cursor-pointer"}
+              %input{type:"checkbox", name: "filters[case_size][]", value: value, class: "h-4 w-4", "data-action": "change->filters#submitForm"}
+              %div{class: "text-base"}= value
+  - if facet == "operations"
+    %div{class: "gap-y-3 category-filter relative cursor-pointer", "data-action": "click->filters#toggle_filter"}
+      %div{class: "flex flex-row items-center border border-gray-300 p-2 gap-x-3"}
+        %div= t("operations")
+        %div
+          %svg.w-3.h-3{:fill => "none", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
+            %path{:d => "m19.5 8.25-7.5 7.5-7.5-7.5", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
+      %div{class: "sub absolute bg-white top-12 border shadow-md min-w-48 z-40 p-3 max-h-60 overflow-y-auto drop-sub hidden"}
+        %div{class: "flex flex-col gap-2"}
+          - values.keys.each do |value|
+            %label{class: "flex flex-row gap-x-2 items-center cursor-pointer"}
+              %input{type:"checkbox", name: "filters[operations][]", value: value, class: "h-4 w-4", "data-action": "change->filters#submitForm"}
+              %div{class: "text-base"}= value
+  - if facet == "warranty"
+    %div{class: "gap-y-3 category-filter relative cursor-pointer", "data-action": "click->filters#toggle_filter"}
+      %div{class: "flex flex-row items-center border border-gray-300 p-2 gap-x-3"}
+        %div= t("warranty")
+        %div
+          %svg.w-3.h-3{:fill => "none", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
+            %path{:d => "m19.5 8.25-7.5 7.5-7.5-7.5", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
+      %div{class: "sub absolute bg-white top-12 border shadow-md min-w-48 z-40 p-3 max-h-60 overflow-y-auto drop-sub hidden"}
+        %div{class: "flex flex-col gap-2"}
+          - values.keys.each do |value|
+            %label{class: "flex flex-row gap-x-2 items-center cursor-pointer"}
+              %input{type:"checkbox", name: "filters[warranty][]", value: value, class: "h-4 w-4", "data-action": "change->filters#submitForm"}
+              %div{class: "text-base"}= value
+  -# - if facet == "material_metal"
+  -#   %div{class: "gap-y-3 category-filter relative cursor-pointer", "data-action": "click->filters#toggle_filter"}
+  -#     %div{class: "flex flex-row items-center border border-gray-300 p-2 gap-x-3"}
+  -#       %div= t("material_metal")
+  -#       %div
+  -#         %svg.w-3.h-3{:fill => "none", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
+  -#           %path{:d => "m19.5 8.25-7.5 7.5-7.5-7.5", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
+  -#     %div{class: "sub absolute bg-white top-12 border shadow-md min-w-48 z-40 p-3 max-h-60 overflow-y-auto drop-sub hidden"}
+  -#       %div{class: "flex flex-col gap-2"}
+  -#         - values.keys.each do |value|
+  -#           %label{class: "flex flex-row gap-x-2 items-center cursor-pointer"}
+  -#             %input{type:"checkbox", name: "filters[material_metal][]", value: value, class: "h-4 w-4", "data-action": "change->filters#submitForm"}
+  -#             %div{class: "text-base"}= value
+
+  -# - if facet == "gold_karats"
+  -#   %div{class: "gap-y-3 category-filter relative cursor-pointer", "data-action": "click->filters#toggle_filter"}
+  -#     %div{class: "flex flex-row items-center border border-gray-300 p-2 gap-x-3"}
+  -#       %div= t("gold_karats")
+  -#       %div
+  -#         %svg.w-3.h-3{:fill => "none", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
+  -#           %path{:d => "m19.5 8.25-7.5 7.5-7.5-7.5", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
+  -#     %div{class: "sub absolute bg-white top-12 border shadow-md min-w-48 z-40 p-3 max-h-60 overflow-y-auto drop-sub hidden"}
+  -#       %div{class: "flex flex-col gap-2"}
+  -#         - values.keys.each do |value|
+  -#           %label{class: "flex flex-row gap-x-2 items-center cursor-pointer"}
+  -#             %input{type:"checkbox", name: "filters[gold_karats][]", value: value, class: "h-4 w-4", "data-action": "change->filters#submitForm"}
+  -#             %div{class: "text-base"}= value
+  - if facet == "finish"
+    %div{class: "gap-y-3 category-filter relative cursor-pointer", "data-action": "click->filters#toggle_filter"}
+      %div{class: "flex flex-row items-center border border-gray-300 p-2 gap-x-3"}
+        %div= t("finish")
+        %div
+          %svg.w-3.h-3{:fill => "none", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
+            %path{:d => "m19.5 8.25-7.5 7.5-7.5-7.5", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
+      %div{class: "sub absolute bg-white top-12 border shadow-md min-w-48 z-40 p-3 max-h-60 overflow-y-auto drop-sub hidden"}
+        %div{class: "flex flex-col gap-2"}
+          - values.keys.each do |value|
+            %label{class: "flex flex-row gap-x-2 items-center cursor-pointer"}
+              %input{type:"checkbox", name: "filters[finish][]", value: value, class: "h-4 w-4", "data-action": "change->filters#submitForm"}
+              %div{class: "text-base"}= value
+  -# - if facet == "weight"
+  -#   %div{class: "gap-y-3 category-filter relative cursor-pointer", "data-action": "click->filters#toggle_filter"}
+  -#     %div{class: "flex flex-row items-center border border-gray-300 p-2 gap-x-3"}
+  -#       %div= t("weight")
+  -#       %div
+  -#         %svg.w-3.h-3{:fill => "none", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
+  -#           %path{:d => "m19.5 8.25-7.5 7.5-7.5-7.5", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
+  -#     %div{class: "sub absolute bg-white top-12 border shadow-md min-w-48 z-40 p-3 max-h-60 overflow-y-auto drop-sub hidden"}
+  -#       %div{class: "flex flex-col gap-2"}
+  -#         - values.keys.each do |value|
+  -#           %label{class: "flex flex-row gap-x-2 items-center cursor-pointer"}
+  -#             %input{type:"checkbox", name: "filters[weight][]", value: value, class: "h-4 w-4", "data-action": "change->filters#submitForm"}
+  -#             %div{class: "text-base"}= value
+  -# - if facet == "stone"
+  -#   %div{class: "gap-y-3 category-filter relative cursor-pointer", "data-action": "click->filters#toggle_filter"}
+  -#     %div{class: "flex flex-row items-center border border-gray-300 p-2 gap-x-3"}
+  -#       %div= t("stone")
+  -#       %div
+  -#         %svg.w-3.h-3{:fill => "none", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
+  -#           %path{:d => "m19.5 8.25-7.5 7.5-7.5-7.5", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
+  -#     %div{class: "sub absolute bg-white top-12 border shadow-md min-w-48 z-40 p-3 max-h-60 overflow-y-auto drop-sub hidden"}
+  -#       %div{class: "flex flex-col gap-2"}
+  -#         - values.keys.each do |value|
+  -#           %label{class: "flex flex-row gap-x-2 items-center cursor-pointer"}
+  -#             %input{type:"checkbox", name: "filters[stone][]", value: value, class: "h-4 w-4", "data-action": "change->filters#submitForm"}
+  -#             %div{class: "text-base"}= value
+  -# - if facet == "stone_cutting"
+  -#   %div{class: "gap-y-3 category-filter relative cursor-pointer", "data-action": "click->filters#toggle_filter"}
+  -#     %div{class: "flex flex-row items-center border border-gray-300 p-2 gap-x-3"}
+  -#       %div= t("stone_cutting")
+  -#       %div
+  -#         %svg.w-3.h-3{:fill => "none", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
+  -#           %path{:d => "m19.5 8.25-7.5 7.5-7.5-7.5", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
+  -#     %div{class: "sub absolute bg-white top-12 border shadow-md min-w-48 z-40 p-3 max-h-60 overflow-y-auto drop-sub hidden"}
+  -#       %div{class: "flex flex-col gap-2"}
+  -#         - values.keys.each do |value|
+  -#           %label{class: "flex flex-row gap-x-2 items-center cursor-pointer"}
+  -#             %input{type:"checkbox", name: "filters[stone_cutting][]", value: value, class: "h-4 w-4", "data-action": "change->filters#submitForm"}
+  -#             %div{class: "text-base"}= value
+  -# - if facet == "stone_weight"
+  -#   %div{class: "gap-y-3 category-filter relative cursor-pointer", "data-action": "click->filters#toggle_filter"}
+  -#     %div{class: "flex flex-row items-center border border-gray-300 p-2 gap-x-3"}
+  -#       %div= t("stone_weight")
+  -#       %div
+  -#         %svg.w-3.h-3{:fill => "none", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
+  -#           %path{:d => "m19.5 8.25-7.5 7.5-7.5-7.5", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
+  -#     %div{class: "sub absolute bg-white top-12 border shadow-md min-w-48 z-40 p-3 max-h-60 overflow-y-auto drop-sub hidden"}
+  -#       %div{class: "flex flex-col gap-2"}
+  -#         - values.keys.each do |value|
+  -#           %label{class: "flex flex-row gap-x-2 items-center cursor-pointer"}
+  -#             %input{type:"checkbox", name: "filters[stone_weight][]", value: value, class: "h-4 w-4", "data-action": "change->filters#submitForm"}
+  -#             %div{class: "text-base"}= value
+  -# - if facet == "stone_color"
+  -#   %div{class: "gap-y-3 category-filter relative cursor-pointer", "data-action": "click->filters#toggle_filter"}
+  -#     %div{class: "flex flex-row items-center border border-gray-300 p-2 gap-x-3"}
+  -#       %div= t("stone_color")
+  -#       %div
+  -#         %svg.w-3.h-3{:fill => "none", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
+  -#           %path{:d => "m19.5 8.25-7.5 7.5-7.5-7.5", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
+  -#     %div{class: "sub absolute bg-white top-12 border shadow-md min-w-48 z-40 p-3 max-h-60 overflow-y-auto drop-sub hidden"}
+  -#       %div{class: "flex flex-col gap-2"}
+  -#         - values.keys.each do |value|
+  -#           %label{class: "flex flex-row gap-x-2 items-center cursor-pointer"}
+  -#             %input{type:"checkbox", name: "filters[stone_color][]", value: value, class: "h-4 w-4", "data-action": "change->filters#submitForm"}
+  -#             %div{class: "text-base"}= value
+  -# - if facet == "stone_purity"
+  -#   %div{class: "gap-y-3 category-filter relative cursor-pointer", "data-action": "click->filters#toggle_filter"}
+  -#     %div{class: "flex flex-row items-center border border-gray-300 p-2 gap-x-3"}
+  -#       %div= t("stone_purity")
+  -#       %div
+  -#         %svg.w-3.h-3{:fill => "none", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
+  -#           %path{:d => "m19.5 8.25-7.5 7.5-7.5-7.5", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
+  -#     %div{class: "sub absolute bg-white top-12 border shadow-md min-w-48 z-40 p-3 max-h-60 overflow-y-auto drop-sub hidden"}
+  -#       %div{class: "flex flex-col gap-2"}
+  -#         - values.keys.each do |value|
+  -#           %label{class: "flex flex-row gap-x-2 items-center cursor-pointer"}
+  -#             %input{type:"checkbox", name: "filters[stone_purity][]", value: value, class: "h-4 w-4", "data-action": "change->filters#submitForm"}
+  -#             %div{class: "text-base"}= value

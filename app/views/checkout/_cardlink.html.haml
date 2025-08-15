@@ -1,0 +1,47 @@
+%div{data: {controller: "cardlink"}}
+  %form#cardlink_post{"accept-charset" => "UTF-8", :action => "https://vpos.eurocommerce.gr/vpos/shophandlermpi", :method => "POST"}
+    %input{:name => "version", :type => "hidden", :value => "2"}
+    %input{:name => "mid", :type => "hidden", :value => @merchant_id}
+    %input{:name => "lang", :type => "hidden", :value => ""}
+    %input{:name => "deviceCategory", :type => "hidden", :value => ""}
+    %input{:name => "orderid", :type => "hidden", :value => @order.id}
+    %input{:name => "orderDesc", :type => "hidden", :value => ""}
+    %input{:name => "orderAmount", :type => "hidden", :value => @order.total}
+    %input{:name => "currency", :type => "hidden", :value => "EUR"}
+    %input{:name => "payerEmail", :type => "hidden", :value => @order.data['email']}
+    %input{:name => "payerPhone", :type => "hidden", :value => ""}
+    %input{:name => "billCountry", :type => "hidden", :value => "GR"}
+    %input{:name => "billState", :type => "hidden", :value => "Greece"}
+    %input{:name => "billZip", :type => "hidden", :value => @order.data['postal_code']}
+    %input{:name => "billCity", :type => "hidden", :value => @order.data['region']}
+    %input{:name => "billAddress", :type => "hidden", :value => @order.data['address']}
+    %input{:name => "weight", :type => "hidden", :value => ""}
+    %input{:name => "dimensions", :type => "hidden", :value => ""}
+    %input{:name => "shipCountry", :type => "hidden", :value => ""}
+    %input{:name => "shipState", :type => "hidden", :value => ""}
+    %input{:name => "shipZip", :type => "hidden", :value => ""}
+    %input{:name => "shipCity", :type => "hidden", :value => ""}
+    %input{:name => "shipAddress", :type => "hidden", :value => ""}
+    %input{:name => "addFraudScore", :type => "hidden", :value => ""}
+    %input{:name => "maxPayRetries", :type => "hidden", :value => ""}
+    %input{:name => "reject3dsU", :type => "hidden", :value => ""}
+    %input{:name => "payMethod", :type => "hidden", :value => ""}
+    %input{:name => "trType", :type => "hidden", :value => "2"}
+    %input{:name => "extInstallmentoffset", :type => "hidden", :value => (@order.data['installments'] && @order.data['installments'] != "0" ? 0 : "")}
+    %input{:name => "extInstallmentperiod", :type => "hidden", :value => (@order.data['installments'] && @order.data['installments'] != "0" ? @order.data['installments'] : "")}
+    %input{:name => "extRecurringfrequency", :type => "hidden", :value => ""}
+    %input{:name => "extRecurringenddate", :type => "hidden", :value => ""}
+    %input{:name => "blockScore", :type => "hidden", :value => ""}
+    %input{:name => "cssUrl", :type => "hidden", :value => ""}
+    %input{:name => "confirmUrl", :type => "hidden", :value => @form_data_array[34]}
+    %input{:name => "cancelUrl", :type => "hidden", :value => @form_data_array[35]}
+    %input{:name => "var1", :type => "hidden", :value => ""}
+    %input{:name => "var2", :type => "hidden", :value => ""}
+    %input{:name => "var3", :type => "hidden", :value => ""}
+    %input{:name => "var4", :type => "hidden", :value => ""}
+    %input{:name => "var5", :type => "hidden", :value => ""}
+    %input{:name => "var6", :type => "hidden", :value => ""}
+    %input{:name => "var7", :type => "hidden", :value => ""}
+    %input{:name => "var8", :type => "hidden", :value => ""}
+    %input{:name => "var9", :type => "hidden", :value => ""}
+    %input{:name => "digest", :type => "hidden", :value => @digest.html_safe}

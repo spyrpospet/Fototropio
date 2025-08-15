@@ -1,0 +1,19 @@
+= content_for :body do
+  %div{class: "flex flex-row items-center justify-between border-b pb-3 mb-6", id: "product-heading"}
+    %h1{class: "text-2xl font-bold"}= t("products")
+    = link_to  new_admin_product_path, class: "common-text-color" do
+      %svg.w-6.h-6{:fill => "currentColor", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
+        %path{"clip-rule" => "evenodd", :d => "M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 9a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V15a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V9Z", "fill-rule" => "evenodd"}
+  %div{id: "product-filters"}
+    = simple_form_for :search, url: "", method: :get, data: {turbo_frame: :search_body, "controller": "mass-selection"} do |s|
+      %table{class: "table w-full"}
+        %tbody
+          %tr
+            %td{class: "w-4/12"}= s.input :title, label: false, placeholder: t("search"), input_html: {value: (params[:search].present? ? params[:search][:title] : ""), class: "border border-gray-300 rounded-lg p-3 w-full"}, wrapper: false
+            %td{class: "w-2/12", colspan: "2"}
+            %td{class: "w-2/12"}
+            %td{class: "w-2/12"}= s.input :status, as: :select, include_blank: true, collection: [[t("available"), true], [t("unavailable"), false]], selected: (params[:search].present? ? params[:search][:status] : 0), label: false, wrapper: false, input_html: {class: "border border-gray-300 rounded-lg p-2 w-full"}
+            %td{class: "flex-shrink flex justify-center gap-x-3"}
+              = s.submit t("search"), class: "bg-blue-500 text-white px-4 py-2 rounded-lg cursor-pointer"
+              %button{class: "bg-red-500 text-white px-4 py-2 rounded-lg cursor-pointer", type: "button", "data-action": "click->mass-selection#mass_destroy"}= t("delete_all")
+      = render partial: "admin/products/list"

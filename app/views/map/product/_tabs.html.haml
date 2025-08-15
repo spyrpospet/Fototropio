@@ -1,0 +1,9 @@
+- if product.tabs.present?
+  %div{class: "flex flex-col gap-6 mt-12", id: "product-tabs", "data-controller": "tab"}
+    %div{class: "flex flex-wrap gap-6 justify-around lg:justify-center items-center border-b pt-6", id: "headings"}
+      - product.tabs.each_with_index do |tab, index|
+        %div{class: "heading p-6 cursor-pointer border-t border-l border-r #{index == 0 ? "active": ""}", "data-slug": tab.title, "data-tab-target":"heads", "data-action": "click->tab#show_tab_content"}= tab.title
+    %div{class: "flex flex-col gap-6", id: "contents"}
+      - product.tabs.each_with_index do |tab, index|
+        %div{class: "content p-6 border #{index != 0 ? "hidden": ""}", "data-slug": tab.title, "data-tab-target":"contents"}
+          = tab.description&.html_safe

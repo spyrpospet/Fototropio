@@ -1,0 +1,17 @@
+= simple_fields_for @option do |f|
+  = f.simple_fields_for :items, child_index: rand(1000..2000) do |i|
+    %div{class: "flex flex-row items-center justify-between item"}
+      %div{class: "tabs tabs-lifted", role: "tablist"}
+        - I18n.available_locales.each do |locale|
+          %input{class: "tab uppercase", name: "tab_option_new_item_#{@unique_id}", type: "radio", role: "tab", "aria-label":locale, checked: locale == I18n.default_locale}
+          %div{class:"tab-content bg-base-100 border-base-300 rounded-box p-6", role: "tabpanel"}
+            %div{class: "flex flex-col gap-y-2"}
+              = i.label :title, t("title")
+              = i.input "title_#{locale}", input_html: { class: "input input-bordered w-full max-w-xs" }, wrapper: false, label: false
+      %div{class: "flex flex-col gap-y-3", "data-controller": "preview"}
+        = image_tag("https://placehold.co/150x150", size: "150x150", "data-preview-target": "preview")
+        = i.file_field :image, direct_upload: true, "data-preview-target": "source", "data-action": "change->preview#update"
+      %div{class: "flex flex-row items-center gap-x-3", "data-controller": "item"}
+        = link_to "javascript:;", class: "btn btn-error edit text-white", "data-action": "click->item#remove" do
+          %svg.w-6.h-6{:fill => "none", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
+            %path{:d => "M6 18 18 6M6 6l12 12", "stroke-linecap" => "round", "stroke-linejoin" => "round"}

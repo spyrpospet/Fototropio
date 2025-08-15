@@ -1,0 +1,22 @@
+%li{class: "glide__slide"}
+  %div{class: "relative"}
+    = link_to map_url([product.first_category.slug, product.slug]), "data-turbo": false do
+      %div{class: "flex flex-col item"}
+        - if product.main_image.present?
+          = image_tag(product.main_image.variant(:new_arrivals), size: "350x350", class: "object-cover border")
+        - else
+          = image_tag("https://placehold.co/350x350", class: "border")
+      - if product.on_sale?
+        %div{class: "absolute text-sm top-4 left-4 text-grey bg-white border px-3 py-1 rounded-md shadow-md"} -#{product.sale_percentage}%
+      - if product.label.present?
+        %div{class: "absolute text-sm top-4 right-4 text-grey bg-white border px-3 py-1 rounded-md shadow-md"}= product.label.title
+      %div{class: "details flex flex-col gap-y-1 py-3"}
+        - if product.categories.present?
+          %div{class: "text-sm text-gray-400"}= product.categories.first.title
+        %div{class: "font-bold text-xl"}= product.title
+        - if product.offer.present?
+          %div{class: "flex flex-row"}
+            %div{class: "text-gray-400 "}= number_to_currency(product.offer, unit: "€")
+            %div{class: "line-through text-red-600 ml-2"}= number_to_currency(product.price, unit: "€")
+        - else
+          %div{class: "text-gray-400"}= number_to_currency(product.price, unit: "€")

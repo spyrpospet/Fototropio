@@ -1,0 +1,13 @@
+- if values.present? && facet.include?("brand")
+  %div{class: "gap-y-3 category-filter relative cursor-pointer", "data-action": "click->filters#toggle_filter"}
+    %div{class: "flex flex-row items-center border border-gray-300 p-2 gap-x-3"}
+      %div= t("brands")
+      %div
+        %svg.w-3.h-3{:fill => "none", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
+          %path{:d => "m19.5 8.25-7.5 7.5-7.5-7.5", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
+    %div{class: "sub absolute bg-white top-12 border shadow-md min-w-48 z-40 p-3 max-h-60 overflow-y-auto drop-sub hidden"}
+      %div{class: "flex flex-col gap-2"}
+        - values.keys.each do |value|
+          %label{class: "flex flex-row gap-x-2 items-center cursor-pointer"}
+            %input{type:"radio", name: "filter_brand", value: value, class: "h-4 w-4", "data-action": "change->filters#submitForm"}
+            %div{class: "text-base"}= value

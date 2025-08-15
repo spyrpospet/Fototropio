@@ -1,0 +1,7 @@
+- if @order.data["products"].blank?
+  = turbo_stream.update "checkout-form", partial: "checkout/no_products"
+- else
+  = turbo_stream.update "product-list", partial: "checkout/list", locals: { order: @order }
+  = turbo_stream.update "summary", partial: "checkout/summary", locals: { order: @order }
+
+= turbo_stream.update "header-cart", partial: "/header/cart", locals: { count: @order.total_quantity }
