@@ -1,0 +1,9 @@
+= turbo_stream.append @dom_id do
+  = simple_fields_for @product do |p|
+    = p.simple_fields_for :options_products, child_index: @option.id do |op|
+      = op.simple_fields_for :options_products_item, child_index: (p.object&.persisted? ? false : rand(1000..2000)) do |opi|
+        %div{class: "flex flex-row items-center justify-between item"}
+          = opi.input :item_id, as: :select, collection: @option.items, include_blank: false, label: false, wrapper: false, input_html: { class: "select select-bordered w-full max-w-md" }
+          = link_to "javascript:;", class: "btn btn-error text-white", data:{ action:"click->product#remove_item"} do
+            %svg.w-6.h-6{:fill => "none", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
+              %path{:d => "M6 18 18 6M6 6l12 12", "stroke-linecap" => "round", "stroke-linejoin" => "round"}

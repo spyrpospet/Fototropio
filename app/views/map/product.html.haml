@@ -1,0 +1,14 @@
+= content_for :scripts do
+  %script{"type":"application/ld+json"}= @schema_markup.to_json.html_safe
+
+= content_for :body do
+  = simple_form_for @product, url: checkout_add_to_cart_url, html: {method: :post} do |p|
+    = p.input :id,  as: :hidden, input_html: {name: 'product[product_id]'}
+    %div{class: "flex flex-col xl:w-8/12 w-11/12 py-12 mx-auto"}
+      = render partial: "map/product/breadcrumbs", locals: {category: @category, product: @product}
+      %div{id: "product-alert"}
+      %div{class: "grid grid-cols-1 lg:grid-cols-2 gap-12", id: "product", "data-controller": "product"}
+        = render partial: "map/product/image", locals: {product: @product}
+        = render partial: "map/product/details", locals: {product: @product, p: p}
+      = render partial: "map/product/tabs", locals: {product: @product}
+      = render partial: "map/product/see_more", locals: {products: @see_more_products}

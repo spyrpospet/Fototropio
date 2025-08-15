@@ -1,0 +1,8 @@
+%div{class: "flex flex-col gap-y-6", id: "price-filter", "data-controller": "price-range"}
+  %div{class: "text-3xl"}= t(".title")
+  %input{type: "range", min: min_price, max: max_price, value: 0, step: 1, "data-price-range-target": "range", "data-action": "change->price-range#range_changed"}
+  %div{class: "flex flex-row text-black text-xl"}
+    %div Price:
+    %div{class: "ml-2", "data-price-range-target": "minShow"}= number_to_currency(min_price, unit: "€")
+    %div -
+    %div{class: "ml-2"}= number_to_currency(max_price, unit: "€")

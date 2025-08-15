@@ -1,0 +1,13 @@
+= content_for :body do
+  = simple_form_for [:admin, @page], html: { class: "flex flex-col" } do |f|
+    %div{class: "flex flex-row items-center justify-between border-b pb-3 mb-6", id: "page-heading"}
+      %h1{class: "text-2xl font-bold"} #{action_name == "new" ? t("new_page") : t("edit_page")}
+      %div{class: "flex flex-row items-center gap-x-3"}
+        = link_to t("cancel"), admin_pages_path, class: "btn btn-neutral"
+        = f.submit t("save"), class: "btn btn-neutral"
+    %div{class: "flex flex-col test"}
+      %div{id: "page-errors"}
+      %div{class: "tabs tabs-lifted", role: "tablist"}
+        = render partial: 'details', locals: { f: f, locale: locale }
+        = render partial: 'images', locals: { f: f, locale: locale }
+        = render partial: 'metas', locals: { f: f, locale: locale }

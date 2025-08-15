@@ -1,0 +1,7 @@
+%div{class: "relative item"}
+  = link_to map_url("brands" + "/" + brand.slug), "data-turbo": false do
+    %div{class: "flex flex-col item"}
+      - if brand.image.present?
+        = image_tag(brand.image.variant(:home), size: "163x122", class: "object-cover w-full border")
+      - else
+        = image_tag("https://placehold.co/163x122", class: "object-cover w-full border")

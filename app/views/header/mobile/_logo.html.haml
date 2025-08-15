@@ -1,0 +1,6 @@
+%div{class: "flex", id: "mobile-logo"}
+  = link_to root_path do
+    - if @settings.logo.present?
+      = image_tag(@settings.logo.variant(:mobile_logo), size: "150x30")
+    - else
+      = image_tag("https://placehold.co/150x30", size: "150x30")

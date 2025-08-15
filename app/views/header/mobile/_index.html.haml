@@ -1,0 +1,7 @@
+%div{class: "border-b z-40 bg-white lg:sticky lg:top-0", id: "mobile-header",
+"data-controller": "header",
+"data-header-mobile-menu-outlet":"#mobile-main-menu",
+"data-header-search-outlet": "#product-search"}
+  %div{class: "flex flex-row justify-between items-center w-11/12 mx-auto px-2 py-3"}
+    = render partial: "/header/mobile/logo", cache: true
+    = render partial: "/header/mobile/menu_button"

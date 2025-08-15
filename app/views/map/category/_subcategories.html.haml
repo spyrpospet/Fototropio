@@ -1,0 +1,24 @@
+- if @products.present?
+  - if category.children.published.present?
+    %div{class: "flex flex-row gap-x-3 my-6 text-center overflow-x-auto h-60"}
+      - category.children.published.each do |child|
+        %div
+          = link_to map_url([category.slug, child.slug]), class: "flex flex-col gap-y-3 w-40 h-40" do
+            - if child.menu_image.present? && child.menu_image.variable?
+              = image_tag(child.menu_image.variant(:sub_category), size: "170x170")
+            - else
+              = image_tag("https://placehold.co/170x170")
+            %div{class: "font-bold"}= child.title
+    %div{class: ""}
+- else
+  - if category.children.published.present?
+    %div{class: "grid grid-cols-2 gap-3 my-6 text-center lg:grid-cols-3 xl:grid-cols-4"}
+      - category.children.published.each do |child|
+        %div
+          = link_to map_url([category.slug, child.slug]), class: "flex flex-col gap-y-2" do
+            - if child.menu_image.present? && child.menu_image.variable?
+              = image_tag(child.menu_image.variant(:sub_category), size: "450x450")
+            - else
+              = image_tag("https://placehold.co/450x450")
+            %div{class: "font-bold"}= child.title
+    %div{class: ""}

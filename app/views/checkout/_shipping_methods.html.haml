@@ -1,0 +1,9 @@
+%div{class: "flex flex-col text-center bg-gray-100 border"}
+  %div{class: "py-3 text-lg"}= t("shipping_methods")
+  %div{class: "grid grid-cols-1 md:grid-cols-2 bg-white gap-3 p-3"}
+    %label{class: "flex flex-row gap-x-3 cursor-pointer"}
+      %input{type: "radio", name: "checkout[send_method]", value: "delivery_to_your_location", checked: true}
+      %div= t("delivery_to_your_location")
+    %label{class: "flex flex-row gap-x-3 cursor-pointer"}
+      %input{type: "radio", name: "checkout[send_method]", value: "pickup_from_store"}
+      %div= t("pickup_from_store")

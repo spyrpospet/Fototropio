@@ -1,0 +1,22 @@
+= content_for :inline_scripts do
+  - if @order.present?
+    :javascript
+      fbq('track', 'Purchase', {value: #{@order.total.to_f}, currency: 'EUR'});
+
+= content_for :body do
+  %div{class: "mx-auto w-11/12 2xl:w-8/12 my-10", data: {controller: "checkout"}}
+    %div{class:"success-animation"}
+      %svg.checkmark{:viewbox => "0 0 52 52", :xmlns => "http://www.w3.org/2000/svg"}
+        %circle.checkmark__circle{:cx => "26", :cy => "26", :fill => "none", :r => "25"}
+        %path.checkmark__check{:d => "M14.1 27.2l7.1 7.2 16.7-16.8", :fill => "none"}
+    - if @order.present?
+      %div{class: "text-center text-2xl"}= t("checkout.order.success.title", code: @order.code)
+      %div{class: "mt-8 border rounded-lg p-6"}
+        %div{class: "space-y-4"}
+          - @order.data["products"].each do |product|
+            %div{class: "flex justify-between items-center border-b pb-2"}
+              %div{class: "text-lg"}= product["title_#{I18n.locale}"]
+              %div{class: "text-lg font-semibold"}= number_to_currency(product["price"])
+        %div{class: "mt-6 flex justify-between items-center border-t pt-4"}
+          %div{class: "text-xl font-bold"}= t("checkout.order.total")
+          %div{class: "text-xl font-bold"}= number_to_currency(@order.total)

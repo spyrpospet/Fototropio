@@ -1,0 +1,9 @@
+%div{class: "flex flex-wrap justify-center gap-3"}
+  %div= link_to t("home.title"), root_path
+  %div /
+  - @slugs.each do |slug|
+    - if slug != @slugs.last
+      %div= link_to Category.find_by(slug: slug).title, map_url(slug)
+      %div /
+    - else
+      %div= link_to Category.find_by(slug: slug).title, map_url(slug)

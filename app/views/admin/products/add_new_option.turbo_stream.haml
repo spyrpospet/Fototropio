@@ -1,0 +1,4 @@
+= turbo_stream.append "options-and-items" do
+  = simple_fields_for @product do |p|
+    = p.simple_fields_for :options_products, child_index: @option.id do |op|
+      = render partial: "admin/products/option", locals: { op: op, option: @option, dom_id: @dom_id}

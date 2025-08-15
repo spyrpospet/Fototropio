@@ -1,0 +1,80 @@
+%div{"data-controller": "order"}
+  %div{ class: "flex flex-row bg-white items-center py-4 px-5 rounded-sm justify-start gap-x-3"}
+    %div
+      %h3{class: "text-3xl font-medium text-gray-700"}= t("order_with_code", code: "##{@order.code}").html_safe
+  %div{class: "flex flex-col mt-8 bg-white rounded-sm p-6 rounded-sm", "data-order-target": "orderPrint"}
+    %div{class: "grid grid-cols-1 md:grid-cols-3 md:gap-6"}
+
+      %div{class: "flex flex-col border"}
+        %div{class: "text-center py-3 border-b"}= t('order_info')
+        %div{class: "text-center py-3"}= @order.created_at.strftime("%d/%m/%Y %H:%M")
+        %div{class: "flex flex-row text-center py-3"}
+          %div{class: "w-1/2"}= t("document_type")
+          %div{class: "w-1/2"}= Order::DOCUMENT_MESSAGES[@order.data["document_type"]]
+        %div{class: "flex flex-row text-center py-3"}
+          %div{class: "w-1/2"}= t("shipping_methods")
+          %div{class: "w-1/2"}= Order::SEND_MESSAGES[@order.data["send_method"]]
+        %div{class: "flex flex-row text-center py-3"}
+          %div{class: "w-1/2"}= t("payment_methods")
+          %div{class: "w-1/2"}= Order::PAYMENT_MESSAGES[@order.data["payment_method"]]
+
+      %div{class: "flex flex-col border"}
+        %div{class: "text-center py-3 border-b"}= t('client_info')
+        %div{class: "flex flex-row text-center py-3"}
+          %div{class: "w-1/2"}= t("full_name")
+          %div{class: "w-1/2"} #{@order.data["first_name"]} #{@order.data["last_name"]}
+        %div{class: "flex flex-row text-center py-3"}
+          %div{class: "w-1/2"}= t("email")
+          %div{class: "w-1/2"} #{@order.data["email"]}
+        %div{class: "flex flex-row text-center py-3"}
+          %div{class: "w-1/2"}= t("phone")
+          %div{class: "w-1/2"} #{@order.data["phone"]}
+        %div{class: "flex flex-row text-center py-3"}
+          %div{class: "w-1/2"}= t("mobile")
+          %div{class: "w-1/2"} #{@order.data["mobile"]}
+        %div{class: "flex flex-row text-center py-3"}
+          %div{class: "w-1/2"}= t("address")
+          %div{class: "w-1/2"} #{@order.data["address"]}
+        %div{class: "flex flex-row text-center py-3"}
+          %div{class: "w-1/2"}= t("postal_code")
+          %div{class: "w-1/2"} #{@order.data["postal_code"]}
+        %div{class: "flex flex-row text-center py-3"}
+          %div{class: "w-1/2"}= t("region")
+          %div{class: "w-1/2"} #{@order.data["region"]}
+      %div{class: "flex flex-col border"}
+        %div{class: "text-center py-3 border-b"}= t('invoice_info')
+        %div{class: "flex flex-row text-center py-3"}
+          %div{class: "w-1/2"}= t('company_name')
+          %div{class: "w-1/2"} #{@order.data["company_name"]}
+        %div{class: "flex flex-row text-center py-3"}
+          %div{class: "w-1/2"}= t('social_security_number')
+          %div{class: "w-1/2"} #{@order.data["social_security_number"]}
+        %div{class: "flex flex-row text-center py-3"}
+          %div{class: "w-1/2"}= t('doy')
+          %div{class: "w-1/2"} #{@order.data["doy"]}
+        %div{class: "flex flex-row text-center py-3"}
+          %div{class: "w-1/2"}= t('profession')
+          %div{class: "w-1/2"} #{@order.data["profession"]}
+  %div{class: "flex flex-col space-y-6 bg-white rounded-sm p-6 rounded-sm"}
+    %div{class: "flex flex-col"}
+      %div= t('comments')
+      %div{class: "w-full border h-32 my-3 p-3"}= @order.data["comments"]
+    %div{class: "flex flex-col border p-3", id: "products"}
+      %div{class: "header grid grid-cols-7 pb-3 text-center justify-around border-b"}
+        %div{class: "font-bold"}= t('title')
+        %div{class: "font-bold"}= t('code')
+        %div{class: "font-bold"}= t('quantity')
+        %div{class: "font-bold"}= t('total')
+      %div{class: "bg-white grid grid-cols-7 py-3 space-y-3 text-center items-center justify-around"}
+        - @order.data["products"]&.each do |product|
+          %div
+            = product["title_#{I18n.locale}"]
+            - product["items"]&.each do |i|
+              %div{class: "text-sm"}= i["title"]
+          %div= product["code"]
+          %div= product["quantity"]
+          %div= number_to_currency(product["total"], unit: "€")
+      %div{class: "grid grid-cols-7 justify-end text-center border-t pt-3 mt-6", id: "order-total"}
+        %div{class: "col-span-5"}
+        %div{class:"font-bold"} #{t('total')}:
+        %div{class:"font-bold text-red-400"}= number_to_currency(@order.total, unit: "€")

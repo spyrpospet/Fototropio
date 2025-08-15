@@ -1,0 +1,7 @@
+%div{class: "flex flex-row border-b border-t border-to py-6 my-6 justify-center"}
+  = link_to add_new_item_admin_options_path, "data-turbo-method": "post", class: "btn btn-neutral" do
+    %svg.w-6.h-6{:fill => "none", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
+      %path{:d => "M12 4.5v15m7.5-7.5h-15", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
+%div{class: "flex flex-col gap-y-6", id: "option-items"}
+  = f.simple_fields_for :items do |i|
+    = render partial: "item", locals: { i: i }
