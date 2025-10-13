@@ -1,6 +1,6 @@
 class HomeController < CommonController
   def index
-    @pagy, @posts  = pagy(Post.published.order(created_at: :desc), limit: 7)
+    @pagy, @posts  = pagy(Post.reversed_published, limit: 7)
     @popular_posts = Post.published.popular.limit(5)
     @categories    = Category.published
     @recent_posts  = Post.published.order(created_at: :desc).limit(3)

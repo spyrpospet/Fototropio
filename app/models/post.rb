@@ -25,9 +25,11 @@ class Post < ApplicationRecord
   has_many :categories_posts, dependent: :destroy
   has_many :categories, through: :categories_posts, source: :category
 
-  scope :common,       -> { order(sort_order: :asc) }
-  scope :popular,      -> { common.where(popular: true) }
-  scope :published,    -> { common.where(status: true) }
+  scope :common,              -> { order(sort_order: :asc) }
+  scope :reversed,            -> { order(sort_order: :desc) }
+  scope :popular,             -> { common.where(popular: true) }
+  scope :published,           -> { common.where(status: true) }
+  scope :reversed_published,  -> { reversed.where(status: true) }
 
   def main_category
     @main_category ||= categories&.first
