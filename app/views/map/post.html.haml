@@ -2,5 +2,4 @@
   %div{class: "mx-auto w-11/12 xl:p-0 xl:w-9/12 2xl:w-7/12"}
     %div{class: "flex flex-col"}
       %h1{class: "text-4xl font-bold text-center py-6"}= @post.title
-      %div{class: "text-base leading-relaxed"}
-        = sanitize(CGI.unescapeHTML(@post.description.to_s), tags: %w[p br b strong i em u a ul ol li h1 h2 h3 h4 h5 h6 blockquote], attributes: %w[href title])
+      %div{class: "text-base leading-relaxed"}= @post.description.html_safe
