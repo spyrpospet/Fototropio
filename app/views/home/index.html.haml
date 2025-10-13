@@ -2,8 +2,7 @@
   = stylesheet_link_tag "home", "data-turbo-track": "reload"
 
 = content_for :body do
-  - if !browser.device.mobile?
-    = turbo_frame_tag "home-slider", src: slider_url
+  = turbo_frame_tag "home-slider", src: slider_url
   %div{class: "mx-auto w-11/12 mt-10 xl:p-0 xl:w-9/12 2xl:w-7/12"}
     %div{class: "flex flex-col md:flex-row md:gap-10"}
       %div{class: "md:w-2/3"}
