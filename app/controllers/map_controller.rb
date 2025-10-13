@@ -40,7 +40,7 @@ class MapController < CommonController
   def category
     @category = Category.find_by(slug: @slugs.last)
     return false if @category.blank?
-    @pagy, @posts = pagy(@category.published_posts.order(created_at: :desc), limit: 7)
+    @pagy, @posts = pagy(@category.published_posts, limit: 7)
 
     respond_to do |format|
       format.html { render "category"}
