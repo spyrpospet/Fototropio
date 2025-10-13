@@ -32,7 +32,7 @@
                 - else
                   %a{href: "#", class: "text-orange-500 hover:underline"} Uncategorized
               %div{class: "mt-6 text-gray-600 leading-7"}
-                = truncate(post.description.html_safe, length: 400)
+                = Sanitize.fragment(CGI.unescapeHTML(truncate(post.description.to_s, length: 400)))
         - if @pagy&.pages.to_i > 1
           %div{class: "pagination mt-8 flex justify-center"}= pagy_nav(@pagy).html_safe
       %div{class: "md:w-1/3"}
@@ -46,7 +46,7 @@
                 %img{class: "w-24 h-24 rounded-full object-cover mb-4", src: "https://placehold.co/241x52", alt: "About avatar"}
               - if @user&.description.present?
                 %p{class: "text-gray-600 leading-7"}
-                  = truncate(@user&.description.html_safe, length: 400)
+                  = Sanitize.fragment(CGI.unescapeHTML(truncate(@user&.description.to_s, length: 400)))
               %a{href: map_url("about-page"), class: "mt-4 inline-flex items-center text-orange-500 font-medium hover:underline"}
                 περισσότερα για εμένα
                 %span{class: "ml-2"} →
