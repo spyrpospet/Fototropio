@@ -2,7 +2,23 @@ class Admin::PostsController < Admin::CommonController
   before_action :set_post, only: %i[ show edit update destroy ]
 
   def index
-    @posts = Post.common
+    @pagy, @posts = pagy(Post.common, limit: 20)
+
+    if params[:search].present?
+      query = search_params["title"] || "*"
+      sorts = ["sort_order:asc"]
+
+      @posts = Post.pagy_search(query, {
+        attributesToSearchOn: ["title_#{I18n.locale}"],
+        matchingStrategy: "all",
+        hitsPerPage: 20,
+        sort: sorts
+      })
+
+      @pagy, @posts = pagy_meilisearch(@posts, limit: 20)
+
+      render partial: "admin/posts/list"
+    end
   end
 
   def show
@@ -46,12 +62,17 @@ class Admin::PostsController < Admin::CommonController
     @post = Post.find(params[:id])
   end
 
+  def search_params
+    params.fetch(:search, {}).permit(:title)
+  end
+
   def post_params
     params.require(:post).permit(
       *Post.globalize_attribute_names,
       :popular,
       :image,
       :status,
+      :sort_order,
       category_ids: []
     )
   end

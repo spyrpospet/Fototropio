@@ -1,6 +1,8 @@
 class Post < ApplicationRecord
   include Post::Search
   include CustomTools
+  extend Pagy::Meilisearch
+  ActiveRecord_Relation.include Pagy::Meilisearch
   
   translates :title, :description, :meta_title, :meta_description, :slug
   globalize_accessors locales: I18n.available_locales, attributes: %i[title description meta_title meta_description slug]
