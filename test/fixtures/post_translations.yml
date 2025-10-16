@@ -1,0 +1,9 @@
+# Fixtures for globalize post translations
+published_en:
+  post: published
+  locale: en
+  title: "Sample Post"
+  description: "<p>Intro</p><img src=\"/images/sample.png\" alt=\"Sample\" width=\"100\" height=\"50\">"
+  meta_title: "Sample Post"
+  meta_description: "Desc"
+  slug: "sample-post"

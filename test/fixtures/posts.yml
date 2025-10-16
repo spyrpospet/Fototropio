@@ -7,3 +7,7 @@ one:
 two:
   status: false
   sort_order: 1
+
+published:
+  status: true
+  sort_order: 1

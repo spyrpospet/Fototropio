@@ -18,6 +18,10 @@ class Admin::PostsController < Admin::CommonController
       @pagy, @posts = pagy_meilisearch(@posts, limit: 20)
 
       render partial: "admin/posts/list"
+    elsif turbo_frame_request? || params[:page].present?
+      # When paginating within Turbo Frames (or explicitly requesting a page),
+      # render only the list to avoid empty responses due to content_for usage
+      render partial: "admin/posts/list"
     end
   end
 
