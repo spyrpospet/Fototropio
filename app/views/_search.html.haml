@@ -6,7 +6,7 @@
   %div{class:"flex flex-col gap-y-6"}
     %div{class: "flex flex-row justify-center"}
       = link_to root_path do
-        - if @settings.logo.present?
+        - if @settings.logo.present? && @settings.logo.variable?
           = image_tag(@settings.logo.variant(:logo), size: "241x52")
         - else
           = image_tag("https://placehold.co/241x52", size: "241x52")

@@ -1,5 +1,5 @@
 %div{class: "relative"}
-  - if category.image.present?
+  - if category.image.present? && category.image.variable?
     %picture
       %source{srcset: url_for(category.image.variant(:category_xs)), media: "(max-width: 425px)"}
       %source{srcset: url_for(category.image.variant(:category_sm)), media: "(max-width: 576px)"}

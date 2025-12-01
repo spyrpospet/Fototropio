@@ -16,7 +16,7 @@
         - @sliders.each do |slider|
           %tr{class: "text-center items-center"}
             %td
-              - if slider.image.present?
+              - if slider.image.present? && slider.image.variable?
                 = image_tag(slider.image.variant(:thumbnail), size: "100x100", "data-preview-target": "preview")
               - else
                 = image_tag("https://placehold.co/100x100", size: "100x100", "data-preview-target": "preview")

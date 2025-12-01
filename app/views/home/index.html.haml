@@ -9,7 +9,7 @@
         - @posts.each do |post|
           %div{class: "bg-white rounded overflow-hidden mb-10"}
             = link_to map_url(post.slug), class: "relative" do
-              - if post.image.attached?
+              - if post.image.attached? && post.image.variable?
                 = image_tag post.image.variant(:home), class: "aspect-video object-cover", alt: post.title
               - else
                 %img{class: "aspect-video object-cover", src: "https://placehold.co/700x400", alt: post.title}
@@ -55,7 +55,7 @@
               - @popular_posts.each do |post|
                 %div{class: "flex items-start gap-4 mb-4"}
                   = link_to map_url(post.slug) do
-                    - if post.image&.attached?
+                    - if post.image&.attached? && post.image&.variable?
                       = image_tag post.image.variant(resize_to_fill: [48, 48]), class: "w-12 h-12 rounded-full object-cover", alt: post.title
                     - else
                       %img{class: "w-12 h-12 rounded-full object-cover", src: "https://placehold.co/48x48", alt: post.title}
@@ -70,7 +70,7 @@
               %h3{class: "font-bold uppercase text-black mb-4"} Κατηγορίες
               - @categories.each do |category|
                 %a{href: map_url(category.slug), class: "relative block rounded overflow-hidden mb-3 group"}
-                  - if category.image&.attached?
+                  - if category.image&.attached? && category.image&.variable?
                     - bg_url = url_for(category.image.variant(:home))
                   - else
                     - bg_url = "https://placehold.co/350x40"
@@ -86,7 +86,7 @@
               - @recent_posts.each do |post|
                 %div{class: "mb-8"}
                   %a{href: map_url(post.slug), class: "relative block overflow-hidden rounded"}
-                    - if post.image&.attached?
+                    - if post.image&.attached? && post.image&.variable?
                       = image_tag post.image.variant(:home), class: "w-full aspect-video object-cover"
                     - else
                       %img{class: "w-full aspect-video object-cover", src: "https://placehold.co/700x400", alt: post.title}

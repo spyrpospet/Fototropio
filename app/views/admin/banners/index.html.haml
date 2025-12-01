@@ -17,7 +17,7 @@
         - @banners.each do |banner|
           %tr{class: "text-center items-center"}
             %td
-              - if banner.image.present?
+              - if banner.image.present? && banner.image.variable?
                 = image_tag(banner.image.variant(:thumbnail), size: "100x100", "data-preview-target": "preview")
               - else
                 = image_tag("https://placehold.co/100x100", size: "100x100", "data-preview-target": "preview")

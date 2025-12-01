@@ -5,7 +5,7 @@ class: "fixed top-0 right-0 w-1/4 h-screen bg-white flex flex-col justify-center
 
   %div{class: "py-6"}
     = link_to root_path do
-      - if @settings.logo.present?
+      - if @settings.logo.present? && @settings.logo.variable?
         = image_tag(@settings.logo.variant(:logo), size: "241x52")
       - else
         = image_tag("https://placehold.co/241x52", size: "241x52")

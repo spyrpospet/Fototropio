@@ -16,7 +16,7 @@
         - @brands.each do |brand|
           %tr{class: "text-center"}
             %td
-              - if brand.image.present?
+              - if brand.image.present? && brand.image.variable?
                 = image_tag(brand.image.variant(:admin_list), size: "150x150")
               - else
                 = image_tag("https://placehold.co/150x150", size: "150x150")

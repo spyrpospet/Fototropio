@@ -4,7 +4,7 @@
       %div{class: "lg:w-1/2"}
         = link_to banner.url do
           %div{class:"relative overflow-hidden"}
-            - if banner.image.present?
+            - if banner.image.present? && banner.image.variable?
               = image_tag(banner.image.variant(:home_best_seller), size: "650x450", class: "w-full hover:scale-125 transition ease-in-out duration-300")
             - else
               = image_tag("https://placehold.co/650x450", size: "650x450", class: "w-full hover:scale-125 transition ease-in-out duration-300")

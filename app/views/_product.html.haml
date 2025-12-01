@@ -2,7 +2,7 @@
 %div{class: "item relative"}
   %div{class: "flex flex-col"}
     = link_to map_url(url), class: "image overflow-hidden", "data-turbo": false do
-      - if product.main_image.present?
+      - if product.main_image.present? && product.main_image.variable?
         = image_tag(product.main_image.variant(:category), class: "object-cover w-full hover:scale-125 transition ease-in-out duration-500")
       - else
         = image_tag("https://placehold.co/350x350", class: "object-cover w-full hover:scale-125 transition ease-in-out duration-500")

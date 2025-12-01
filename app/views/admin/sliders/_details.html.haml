@@ -3,7 +3,7 @@
   %div{class: "tabs tabs-lifted", role: "tablist"}
     %div{class: "flex justify-center"}
       %div{class: "flex flex-col gap-y-3", "data-controller": "preview"}
-        - if @slider.image.present?
+        - if @slider.image.present? && @slider.image.variable?
           = image_tag(@slider.image.variant(:large), size: "1920x1024", "data-preview-target": "preview")
         - else
           = image_tag("https://placehold.co/1920x1024", size: "1920x1024", "data-preview-target": "preview")

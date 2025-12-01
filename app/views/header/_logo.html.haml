@@ -1,6 +1,6 @@
 %div{class: "flex flex-shrink", id: "logo"}
   = link_to root_path do
-    - if @settings.logo.present?
+    - if @settings.logo.present? && @settings.logo.variable?
       = image_tag(@settings.logo.variant(:logo), size: "300x150")
     - else
       = image_tag("https://placehold.co/241x52", size: "241x52")

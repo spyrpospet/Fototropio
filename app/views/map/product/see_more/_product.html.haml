@@ -1,7 +1,7 @@
 %div{class: "item relative"}
   %div{class: "flex flex-col"}
     = link_to map_url((product.first_category.slug + "/" + product.slug)), class: "image overflow-hidden", "data-turbo": false do
-      - if product.main_image.present?
+      - if product.main_image.present? && product.main_image.variable?
         = picture_tag(class: "object-cover w-full border hover:scale-125 transition ease-in-out duration-500") do
           = tag(:source, srcset: url_for(product.main_image.variant(:category_425)), media: "(max-width: 425px)")
           = tag(:source, srcset: url_for(product.main_image.variant(:category_768)), media: "(max-width: 768px)")

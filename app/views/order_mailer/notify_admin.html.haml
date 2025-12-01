@@ -1,7 +1,7 @@
 = content_for :body do
   %div{:style => "width: 680px;"}
     = link_to root_url do
-      - if @settings.logo.present?
+      - if @settings.logo.present? && @settings.logo.variable?
         = image_tag(@settings.logo.variant(resize_and_pad: [300, 150, gravity: 'center', background: '#fff']), size: '300x150')
       - else
         = image_tag("https://placehold.co/300x250",  size: '300x150')
