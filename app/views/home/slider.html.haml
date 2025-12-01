@@ -8,7 +8,7 @@
               - @slides.each do |item|
                 %li{class: "glide__slide"}
                   = link_to item.url do
-                    - if item.image.present?
+                    - if item.image.present? && item.image.variable?
                       = image_tag(item.image.variant(:slider), size: "1920x880", class: "object-cover")
                     - else
                       = image_tag("https://placehold.co/1920x880", class: "object-cover")
